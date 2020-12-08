@@ -39,7 +39,7 @@ public class Logic {
 	
 	
 	public void mouseclicked() {
-		ost.play();
+		ost.play();//Esto es para que se de play la música, hay que ponerlo en cada caso donde se necesite
 	}
 
 	
