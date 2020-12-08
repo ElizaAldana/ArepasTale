@@ -5,7 +5,9 @@ import processing.core.PApplet;
 public class Logic {
 
 	private PApplet app;
-	int[][] matrix;;
+	int[][] matrix;
+	
+	
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -13,12 +15,12 @@ public class Logic {
 		matrix = new int[][] {
 
 				/*
-				 0 = sonas vacias
+				 0 = zonas vacías
 				  1 = piso
-				   2 = sonas de daño
+				   2 = zonas de daño
 				    3 = cuadros de muerte
 				    4 = bloqueos
-				    /** esto esta puesto cada 10 casillas para usarlo como guia para orgnizar el arreglo
+				    /** esto esta puesto cada 10 casillas para usarlo como guía para orgnizar el arreglo
 				     
 				     
 				 */
@@ -33,4 +35,5 @@ public class Logic {
 	
 	
 
+	
 }
