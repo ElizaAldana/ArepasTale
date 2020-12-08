@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenScore {
+public class ScreenScore extends Screen {
 
 }

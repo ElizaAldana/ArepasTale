@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenReg {
+public class ScreenReg extends Screen {
 
 }

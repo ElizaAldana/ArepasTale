@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenLog {
+public class ScreenLog extends Screen {
 
 }

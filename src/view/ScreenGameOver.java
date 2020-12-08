@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenGameOver {
+public class ScreenGameOver extends Screen {
 
 }

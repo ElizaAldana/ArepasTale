@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenSplash {
+public class ScreenSplash extends Screen{
 
 }

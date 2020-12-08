@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenGame {
+public class ScreenGame extends Screen{
 
 }

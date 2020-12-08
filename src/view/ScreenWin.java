@@ -1,5 +1,5 @@
 package view;
 
-public class ScreenWin {
+public class ScreenWin extends Screen{
 
 }
