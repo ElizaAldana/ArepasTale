@@ -5,7 +5,9 @@ import processing.core.PApplet;
 public class Logic {
 
 	private PApplet app;
-	int[][] matrix;;
+	int[][] matrix;
+	
+	
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -31,4 +33,5 @@ public class Logic {
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/,4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/,4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/,4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/,4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4}, };
 	}
 
+	
 }

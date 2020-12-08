@@ -10,4 +10,14 @@ public class Main {
 
 	}
 
+	public void settings () {
+	}
+	
+	public void  setup () {
+		
+	}
+
+	public void draw() {
+		
+	}
 }
