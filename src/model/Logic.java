@@ -7,13 +7,13 @@ public class Logic {
 
 	private PApplet app;
 	int[][] matrix;
-	SoundFile ost; 	//Cargar música 
+	SoundFile ost; 	
 
 	
 
 	public Logic(PApplet app) {
-		this.app = app;
-		
+		this.app = app;		
+		ost = new SoundFile(app, "../music/ost.mp3");
 		
 
 		matrix = new int[][] {
@@ -38,6 +38,9 @@ public class Logic {
 	}
 	
 	
+	public void mouseclicked() {
+		ost.play();
+	}
 
 	
 }
