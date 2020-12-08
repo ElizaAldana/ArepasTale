@@ -1,16 +1,20 @@
 package model;
 
 import processing.core.PApplet;
+import processing.sound.SoundFile;
 
 public class Logic {
 
 	private PApplet app;
 	int[][] matrix;
-	
+	SoundFile ost; 	//Cargar música 
+
 	
 
 	public Logic(PApplet app) {
 		this.app = app;
+		
+		
 
 		matrix = new int[][] {
 
