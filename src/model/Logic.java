@@ -19,7 +19,7 @@ public class Logic {
 				  1 = piso
 				   2 = zonas de daño
 				    3 = cuadros de muerte
-				    4 = bloqueos
+				     4 = bloqueos
 				    /** esto esta puesto cada 10 casillas para usarlo como guía para orgnizar el arreglo
 				     
 				     
