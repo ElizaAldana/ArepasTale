@@ -13,12 +13,12 @@ public class Logic {
 		matrix = new int[][] {
 
 				/*
-				 0 = zonas vacias
+				 0 = zonas vacías
 				  1 = piso
 				   2 = zonas de daño
 				    3 = cuadros de muerte
 				    4 = bloqueos
-				    /** esto esta puesto cada 10 casillas para usarlo como guia para orgnizar el arreglo
+				    /** esto esta puesto cada 10 casillas para usarlo como guía para orgnizar el arreglo
 				     
 				     
 				 */
