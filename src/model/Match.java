@@ -1,19 +1,22 @@
 package model;
 
 
-public class Match implements Comparable{
+public class Match implements Comparable <Match>{
 
-	String[] name;
+	String name, date;
 	private int score, time;
-	//date date;
 	
 	
 	
-	public int compareTo(Object arg0) {
+	public int compareTo(Match o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 
+	
+	//Getters & Setters
 	public int getTime() {
 		return time;
 	}
@@ -29,6 +32,8 @@ public class Match implements Comparable{
 	public void setScore(int score) {
 		this.score = score;
 	}
+
+	
 
 	
 	
