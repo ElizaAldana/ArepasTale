@@ -127,7 +127,7 @@ public class Logic {
 			app.background(255);
 			app.fill(0,120,255);
 			app.textSize(50);
-			app.text("loading...", app.width/2-50, app.height/2);
+			app.text("loading...", app.width/2-90, app.height/2);
 			//validarLoading();
 			break;
 		case 1:
