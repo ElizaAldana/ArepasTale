@@ -1,5 +1,7 @@
 package model;
 
+import java.util.concurrent.TimeUnit;
+
 import processing.core.PApplet;
 import processing.sound.SoundFile;
 import view.ScreenGame;
@@ -12,12 +14,14 @@ import view.ScreenSplash;
 import view.ScreenWin;
 
 public class Logic {
+	
+	boolean loadingBoolean;
 
 	private PApplet app;
 	int[][] matrix;
 	SoundFile ost; 	
 	  int screenNum;
-	  ScreenSplash splash;
+	    ScreenSplash splash;
 		ScreenLog login;
 		ScreenReg register;
 		ScreenHome home;
@@ -30,6 +34,39 @@ public class Logic {
 	public Logic(PApplet app) {
 		this.app = app;		
 		ost = new SoundFile(app, "../music/ost.mp3");
+		
+		//----------NO FUNCIONA---------- (hilo para que cargue más rápido la música, no sirve por falta de memoria)
+		//loadingBoolean = false;
+		
+//		if(loadingBoolean == false) {
+//			new Thread(
+//				() -> {
+//					try {
+//						while(!loadingBoolean) {
+//							System.out.println("Esta cargando el archivo de arepasTaleOst en un hilo aparte...");
+//							
+//							System.out.println("Si funciono");
+//							loadingBoolean = true;
+//							Thread.sleep(1);
+//							//TimeUnit.MILLISECONDS.sleep(100);
+//							System.out.println(loadingBoolean);
+//						}
+//						//loadingBoolean = true;
+//						//System.out.println(loadingBoolean);
+//						Thread.sleep(1);
+//						TimeUnit.MILLISECONDS.sleep(1);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//				).start();
+//		}
+//		if(loadingBoolean = true) {
+//			ost = new SoundFile(app, "../music/ost.mp3");
+//		}
+
+		
 		screenNum=1;
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
@@ -64,6 +101,14 @@ public class Logic {
 	
 	public void draw() {
 		switch(screenNum) {
+		case 0:
+			//no se pinta por alguna razón pero permite que cargue el splash page
+			app.background(255);
+			app.fill(0,120,255);
+			app.textSize(50);
+			app.text("loading...", app.width/2-50, app.height/2);
+			//validarLoading();
+			break;
 		case 1:
 			//SPLASH SCREEN
 			splash.draw();
@@ -71,6 +116,7 @@ public class Logic {
 		case 2:
 		//LOGIN
 			login.draw();
+			//splash.draw();
 			break;
 		case 3:
 		//REGISTER
@@ -78,30 +124,43 @@ public class Logic {
 			break;
 		case 4:
 			//HOME
-				home.draw();
-				break;
+			home.draw();
+			//System.out.println(loadingBoolean);
+			//System.out.println(loadingBoolean);
+			break;
 		case 5:
 			//SCORES
-				scores.draw();
-				break;
+			scores.draw();
+			break;
 		case 6:
 			//GAME SCREEN
 			map.draw();
-				break;
+			break;
 		case 7:
 			//WIN
-				win.draw();
-				break;
+			win.draw();
+			break;
 		case 8:
 			//GAME OVER
-				lose.draw();
-				break;
+			lose.draw();
+			break;
 		}
 		
 	}
+	
+//	public void validarLoading() {
+//		if(loadingBoolean == true) {
+//			ost.play();
+//			screenNum=6;
+//		}
+//	}
+	
 	public void mouseClicked() {
 		//SWITCH DE CAMBIO DE PANTALLAS
 		switch(screenNum) {
+		case 0:
+			screenNum=1;
+			break;
 		case 1:
 			//DE SPLASH A LOGIN
 			 screenNum=2;
@@ -129,10 +188,15 @@ public class Logic {
 			//DE HOME A GAME SCREEN
 			if((637>app.mouseX&&app.mouseX>363)&&(456>app.mouseY&&app.mouseY>389)) {
 				//Esto es para que se de play la música
-				ost.play();
-				screenNum=6;
+//				ost.play();
+//				screenNum=6;
+				//if(loadingBoolean == true) {
+					ost.play();
+					screenNum=6;
+				//}
+				
 				}
-				break;
+			break;
 		case 5:
 			//DE SCORES A HOME
 			if((125>app.mouseX&&app.mouseX>39)&&(92>app.mouseY&&app.mouseY>24)) {
@@ -169,8 +233,14 @@ public class Logic {
 			//DE LOSE A GAME SCREEN
 			if((457>app.mouseX&&app.mouseX>181)&&(560>app.mouseY&&app.mouseY>493)) {
 				//Esto es para que se de play la música
+
+				
 				ost.play();
 				screenNum=6;
+//				if(loadingBoolean == true) {
+//					ost.play();
+//					screenNum=6;
+//				}
 				break;
 			
 			}

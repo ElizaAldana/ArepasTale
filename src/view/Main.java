@@ -43,8 +43,8 @@ public class Main extends PApplet {
 	}
 
 	public void draw() {
-		System.out.println(mouseX);
-		System.out.println(mouseY);
+		//System.out.println(mouseX);
+		//System.out.println(mouseY);
 //		switch(screenNum) {
 //		case 1:
 //			//SPLASH SCREEN
