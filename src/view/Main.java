@@ -92,7 +92,8 @@ public class Main extends PApplet {
 	}
 	
 	public void mouseClicked() {
-		switch(screenNum) {
+		this.control.mouseClick();
+		/*switch(screenNum) {
 		case 1:
 			//DE SPLASH A LOGIN
 			screenNum=2;
@@ -164,7 +165,7 @@ public class Main extends PApplet {
 				}
 				break;
 			
-			}
+			}*/
 		}
 
 	public void setScreenNum(int screenNum) {
