@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -22,8 +23,11 @@ public class Logic {
 	int[][] matrix;
 	SoundFile ost; 	
 	int screenNum;
-	private LinkedList<Nombre> name;
-
+	public Match name;
+	private LinkedList<Match> match;
+	private CompareDateMatch date;
+	private CompareScoreMatch score;
+	private CompareTimeMatch time;
 
 
 	    ScreenSplash splash;
@@ -39,6 +43,13 @@ public class Logic {
 	public Logic(PApplet app) {
 		this.app = app;		
 		ost = new SoundFile(app, "../music/ost.mp3");
+		match = new LinkedList<Match>();
+		this.date= new CompareDateMatch();
+		this.score= new CompareScoreMatch();
+		this.time= new CompareTimeMatch();
+
+
+		
 		
 		//----------NO FUNCIONA---------- (hilo para que cargue más rápido la música, no sirve por falta de memoria)
 		//loadingBoolean = false;
@@ -72,7 +83,7 @@ public class Logic {
 //		}
 
 		
-		screenNum=1;
+		screenNum=0;
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
 		register = new ScreenReg(app);
@@ -254,4 +265,34 @@ public class Logic {
 
 	
  }
+	
+	public void sortList(int s) {
+		switch(s) {
+		case 0:
+			Collections.sort(match);
+		break;
+		case 1:
+			Collections.sort(match,date);
+		break;
+		case 2:
+			Collections.sort(match,score);
+		break;
+		case 3:
+			Collections.sort(match, time);
+			break;
+		}
+		
+				
+	}
+	
+	public LinkedList<Match> getList() {
+		return match;
+
+	}
+
+	
+	public void setMatch(LinkedList<Match> match) {
+		this.match = match;
+	
+}
 }
