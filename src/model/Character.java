@@ -6,8 +6,7 @@ import processing.core.PImage;
 
 abstract class Character {
 	public int backX;
-	public int posX;
-	public int posY;
+	public int posX, posY;	
 	protected PApplet app;
 	PImage cheese;
 
@@ -15,6 +14,7 @@ abstract class Character {
 		this.posX = posX;
 		this.posY = posY;
 		this.app = app;
+	
 
 	}
 

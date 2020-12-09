@@ -22,5 +22,9 @@ public class Controller {
 		logica.move(i);
 		
 	}
+	public void sort(int s) {
+	logica.sortList(s);
+	}
+	
 	
 }

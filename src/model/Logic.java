@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +34,7 @@ public class Logic {
 	private CompareScoreMatch score;
 	private CompareTimeMatch time;
 	private Arepa prota;
+	private ArrayList<EnemyRat> rata;
 	private int backX ;
 
 	ScreenSplash splash;
@@ -51,6 +53,8 @@ public class Logic {
 		this.date = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
+		this.rata = new ArrayList<>();
+		
 
 		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
 		// no sirve por falta de memoria)
@@ -95,7 +99,15 @@ public class Logic {
 		lose = new ScreenGameOver(app);
 
 		backX = 0;
+		
+		//Agregar al protagonista en el lugar indicado.
 		prota = new Arepa(0, 1, 4, app);
+		//Agregar a las ratas en el lugar indicado.
+		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
+		rata.add(new EnemyRat(backX, 23, 4, 1, 1, app));
+		//int backX, int posX, int posY, int dirX, int vel,PApplet app
+		
+		
 		matrix = new int[][] {
 
 				/*
@@ -154,7 +166,11 @@ public class Logic {
 
 		
 			map.draw(backX);
+			System.out.println(backX);
 			prota.draw();
+			for (int i = 0; i < rata.size(); i++) {
+				rata.get(i).draw();
+			}
 			// temporizador
 			if (sec > timer) {
 				timer = sec;
@@ -246,6 +262,7 @@ public class Logic {
 				// if(loadingBoolean == true) {
 				// ost.play();
 				screenNum = 6;
+				
 				// }
 
 			}

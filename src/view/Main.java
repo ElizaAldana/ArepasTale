@@ -59,6 +59,7 @@ public class Main extends PApplet {
 
 	public void mouseClicked() {
 		this.control.mouseClick();
+		this.control.sort(key);
 
 	}
 
