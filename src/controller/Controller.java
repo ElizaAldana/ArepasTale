@@ -17,5 +17,10 @@ public class Controller {
 	public void draw() {
 		this.logica.draw();
 	}
+
+	public void move(int i) {
+		logica.move(i);
+		
+	}
 	
 }

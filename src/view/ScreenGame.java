@@ -10,8 +10,8 @@ public class ScreenGame extends Screen{
 		image= app.loadImage("pngs/Pantallas/Background.png");
 		// TODO Auto-generated constructor stub
 	}
-	public void draw() {
+	public void draw(int x) {
 		app.imageMode(PConstants.CORNER);
-		app.image(image,0,0,9004,app.height);
+		app.image(image,140*(x),0,9004,app.height);
 	}
 }
