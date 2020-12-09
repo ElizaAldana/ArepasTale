@@ -31,7 +31,7 @@ public class Main extends PApplet {
 
 	public void setup() {
 		this.control = new Controller(this);
-		screenNum=8;
+		screenNum=1;
 		splash = new ScreenSplash(this);
 		login = new ScreenLog(this);
 		register = new ScreenReg(this);
