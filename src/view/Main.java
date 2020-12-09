@@ -12,16 +12,16 @@ public class Main extends PApplet {
 		// TODO Auto-generated method stub
 		PApplet.main(Main.class.getName());
 	}
-	int screenNum;
-	ScreenSplash splash;
-	ScreenLog login;
-	ScreenReg register;
-	ScreenHome home;
-	ScreenGame map;
-	ScreenScore scores;
-	ScreenWin win;
-	ScreenGameOver lose;
-	
+	//int screenNum;
+//	ScreenSplash splash;
+//	ScreenLog login;
+//	ScreenReg register;
+//	ScreenHome home;
+//	ScreenGame map;
+//	ScreenScore scores;
+//	ScreenWin win;
+//	ScreenGameOver lose;
+//	
 	
 	
 	public void settings() {
@@ -31,55 +31,55 @@ public class Main extends PApplet {
 
 	public void setup() {
 		this.control = new Controller(this);
-		screenNum=1;
-		splash = new ScreenSplash(this);
-		login = new ScreenLog(this);
-		register = new ScreenReg(this);
-		home = new ScreenHome(this);
-		map = new ScreenGame(this);
-		scores = new ScreenScore(this);
-		win = new ScreenWin(this);
-		lose = new ScreenGameOver(this);
+//		screenNum=1;
+//		splash = new ScreenSplash(this);
+//		login = new ScreenLog(this);
+//		register = new ScreenReg(this);
+//		home = new ScreenHome(this);
+//		map = new ScreenGame(this);
+//		scores = new ScreenScore(this);
+//		win = new ScreenWin(this);
+//		lose = new ScreenGameOver(this);
 	}
 
 	public void draw() {
 		System.out.println(mouseX);
 		System.out.println(mouseY);
-		switch(screenNum) {
-		case 1:
-			//SPLASH SCREEN
-			splash.draw();
-			break;
-		case 2:
-		//LOGIN
-			login.draw();
-			break;
-		case 3:
-		//REGISTER
-			register.draw();
-			break;
-		case 4:
-			//HOME
-				home.draw();
-				break;
-		case 5:
-			//SCORES
-				scores.draw();
-				break;
-		case 6:
-			//GAME SCREEN
-			map.draw();
-				break;
-		case 7:
-			//WIN
-				win.draw();
-				break;
-		case 8:
-			//GAME OVER
-				lose.draw();
-				break;
-		}
-		
+//		switch(screenNum) {
+//		case 1:
+//			//SPLASH SCREEN
+//			splash.draw();
+//			break;
+//		case 2:
+//		//LOGIN
+//			login.draw();
+//			break;
+//		case 3:
+//		//REGISTER
+//			register.draw();
+//			break;
+//		case 4:
+//			//HOME
+//				home.draw();
+//				break;
+//		case 5:
+//			//SCORES
+//				scores.draw();
+//				break;
+//		case 6:
+//			//GAME SCREEN
+//			map.draw();
+//				break;
+//		case 7:
+//			//WIN
+//				win.draw();
+//				break;
+//		case 8:
+//			//GAME OVER
+//				lose.draw();
+//				break;
+//		}
+//		
 
 	}
 
@@ -168,13 +168,6 @@ public class Main extends PApplet {
 			}*/
 		}
 
-	public void setScreenNum(int screenNum) {
-		this.screenNum = screenNum;
-	}
-
-	public int getScreenNum() {
-		return screenNum;
-	}
 		
 	}
 

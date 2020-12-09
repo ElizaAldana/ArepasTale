@@ -11,7 +11,8 @@ public class Controller {
 	}
 	
 	public void mouseClick() {
-		this.logica.mouseclicked();
+		this.logica.mouseClicked();
+		this.logica.draw();
 	}
 	
 }
