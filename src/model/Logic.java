@@ -163,8 +163,10 @@ public class Logic {
 			scores.draw();
 			break;
 		case 6:
+
 			// GAME SCREEN
 			sec = PApplet.second();
+
 		
 			map.draw(backX);
 			prota.draw();
@@ -217,25 +219,33 @@ public class Logic {
 			screenNum = 1;
 			break;
 		case 1:
-			// DE SPLASH A LOGIN
-			screenNum = 2;
+
+			//DE SPLASH A LOGIN
+			login.textFields();
+			 screenNum=2;
 			break;
 		case 2:
-			// DE LOGIN A REGISTER
-			if ((613 > app.mouseX && app.mouseX > 387) && (675 > app.mouseY && app.mouseY > 654)) {
-				screenNum = 3;
+			//DE LOGIN A REGISTER
+			if((613>app.mouseX&&app.mouseX>387)&&(675>app.mouseY&&app.mouseY>654)) {
+				login.hide();
+				register.textFields();
+				screenNum=3;
 			}
-			// DE LOGIN A HOME
-			if ((637 > app.mouseX && app.mouseX > 363) && (582 > app.mouseY && app.mouseY > 512)) {
-				screenNum = 4;
-			}
-			break;
+			//DE LOGIN A HOME
+			if((637>app.mouseX&&app.mouseX>363)&&(582>app.mouseY&&app.mouseY>512)) {
+				login.hide();
+				screenNum=4;
+				}
+				break;
 		case 3:
-			// DE REGISTER A LOGIN
-			if ((637 > app.mouseX && app.mouseX > 363) && (647 > app.mouseY && app.mouseY > 583)) {
-				screenNum = 2;
-			}
-			break;
+			//DE REGISTER A LOGIN
+			if((637>app.mouseX&&app.mouseX>363)&&(647>app.mouseY&&app.mouseY>583)) {
+				register.hide();
+				login.textFields();
+				screenNum=2;
+				}
+				break;
+
 		case 4:
 			// DE HOME A SCORES
 			if ((637 > app.mouseX && app.mouseX > 363) && (569 > app.mouseY && app.mouseY > 503)) {
@@ -276,11 +286,14 @@ public class Logic {
 			}
 			break;
 		case 7:
-			// DE WIN A HOME
-			if ((620 > app.mouseX && app.mouseX > 350) && (672 > app.mouseY && app.mouseY > 602)) {
-				screenNum = 4;
-			}
-			break;
+
+			//DE WIN A HOME
+			if((620>app.mouseX&&app.mouseX>350)&&(672>app.mouseY&&app.mouseY>602)) {
+				win.hide();
+				screenNum=4;
+				}
+				break;
+
 		case 8:
 			// DE LOSE A HOME
 			if ((816 > app.mouseX && app.mouseX > 539) && (560 > app.mouseY && app.mouseY > 493)) {
