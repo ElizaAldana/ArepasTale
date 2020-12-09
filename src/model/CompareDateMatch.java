@@ -2,11 +2,11 @@ package model;
 
 import java.util.Comparator;
 
-public class CompareDateMatch implements Comparator <CompareDateMatch>{
+public class CompareDateMatch implements Comparator <Match>{
 
 	
-	public int compare(CompareDateMatch o1, CompareDateMatch o2) {
-		return 0;
+	public int compare(Match o1, Match o2) {
+		return o1.getDate().compareTo(o2.getDate());
 	}
 
 	

@@ -24,6 +24,8 @@ public class Nombre implements Comparable <Nombre>{
 	}
 	
 	
+	
+	
 	//Getters & Setters
 	public PApplet getApp() {
 		return app;

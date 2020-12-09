@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import processing.core.PApplet;
@@ -20,7 +21,11 @@ public class Logic {
 	private PApplet app;
 	int[][] matrix;
 	SoundFile ost; 	
-	  int screenNum;
+	int screenNum;
+	private LinkedList<Nombre> name;
+
+
+
 	    ScreenSplash splash;
 		ScreenLog login;
 		ScreenReg register;
