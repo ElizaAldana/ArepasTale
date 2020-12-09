@@ -26,10 +26,11 @@ public class Main extends PApplet {
 	public void draw() {
 		this.control.draw();
 
-		System.out.println(mouseX);
+		/*System.out.println(mouseX);
 		System.out.println(mouseY);
-		
+		*/
 
+		
 	}
 
 	public void keyPressed() {

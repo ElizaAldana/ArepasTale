@@ -7,13 +7,13 @@ import processing.core.PImage;
 abstract class Character {
 	public int backX;
 	public int posX;
-	public int posY;
+	public float posY;
 	protected PApplet app;
 	PImage cheese;
 
-	public Character(int backX, int posX, int posY, PApplet app) {
+	public Character(int backX, int posX, float posY2, PApplet app) {
 		this.posX = posX;
-		this.posY = posY;
+		this.posY = posY2;
 		this.app = app;
 
 	}
@@ -23,6 +23,6 @@ abstract class Character {
 	}
 
 	public int getPosY() {
-		return posY;
+		return (int) posY;
 	}
 }
