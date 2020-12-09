@@ -5,7 +5,7 @@ import controlP5.Textfield;
 import processing.core.PApplet;
 
 public class ScreenLog extends Screen {
-
+	String user,password;
 	public ScreenLog(PApplet app) {
 		super(app);
 		image= app.loadImage("pngs/Pantallas/LogIn.png");
@@ -47,4 +47,21 @@ public class ScreenLog extends Screen {
 		cp5.get(Textfield.class,"user").clear();
 		cp5.get(Textfield.class,"password").clear();
 	}
+public void logU() {
+		
+		user = cp5.get(Textfield.class,"user").getText();
+		password = cp5.get(Textfield.class,"password").getText();
+	}
+public String getUser() {
+	return user;
+}
+public void setUser(String user) {
+	this.user = user;
+}
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
 }
