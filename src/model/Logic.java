@@ -161,6 +161,7 @@ public class Logic {
 			//temporizador 
 			  if(sec > timer) {
 				  timer=sec;
+				  map.setBGx(map.getBGx()-1);
 				 cont++;
 			  }
 			  if(sec>60) {
@@ -209,21 +210,27 @@ public class Logic {
 			break;
 		case 1:
 			//DE SPLASH A LOGIN
+			login.textFields();
 			 screenNum=2;
 			break;
 		case 2:
 			//DE LOGIN A REGISTER
 			if((613>app.mouseX&&app.mouseX>387)&&(675>app.mouseY&&app.mouseY>654)) {
+				login.hide();
+				register.textFields();
 				screenNum=3;
 			}
 			//DE LOGIN A HOME
 			if((637>app.mouseX&&app.mouseX>363)&&(582>app.mouseY&&app.mouseY>512)) {
+				login.hide();
 				screenNum=4;
 				}
 				break;
 		case 3:
 			//DE REGISTER A LOGIN
 			if((637>app.mouseX&&app.mouseX>363)&&(647>app.mouseY&&app.mouseY>583)) {
+				register.hide();
+				login.textFields();
 				screenNum=2;
 				}
 				break;
@@ -268,6 +275,7 @@ public class Logic {
 		case 7:
 			//DE WIN A HOME
 			if((620>app.mouseX&&app.mouseX>350)&&(672>app.mouseY&&app.mouseY>602)) {
+				win.hide();
 				screenNum=4;
 				}
 				break;
