@@ -23,7 +23,7 @@ public class Logic {
 	int[][] matrix;
 	SoundFile ost; 	
 	int screenNum;
-	int sec;
+	int sec, scores2;
 	int timer=0;
 	int cont=0;
 	int cont1=0;
@@ -45,8 +45,8 @@ public class Logic {
 		
 
 	public Logic(PApplet app) {
-		this.app = app;		
-		ost = new SoundFile(app, "../music/ost.mp3");
+		this.app = app;
+		//ost = new SoundFile(app, "../music/ost.mp3");
 		match = new LinkedList<Match>();
 		this.date= new CompareDateMatch();
 		this.score= new CompareScoreMatch();
@@ -155,22 +155,30 @@ public class Logic {
 			break;
 		case 6:
 			//GAME SCREEN
-			map.draw();
 			sec= PApplet.second();
+			map.draw();
+			
 			//temporizador 
 			  if(sec > timer) {
 				  timer=sec;
 				 cont++;
 			  }
 			  if(sec>60) {
-				  sec =0;
+				  sec = 0;
 			  }
 			  if(cont>=60) {cont1++;}
 			
+			  app.fill(238,19,19);
+			  app.textSize(25);
+			  app.text(cont1 + ":"+ cont, 150, 30);
+			  app.text("Timer:", 60, 30);
+
 		
-			  app.fill(210);
-			  app.textSize(32);
-			  app.text(cont1 + ":"+ cont, 60, 237);
+			  app.fill(238,19,19);
+			  app.textSize (25);
+			  app.text("Score:", 230, 30);
+			  app.text(scores2, 315, 30);
+
 			break;
 		case 7:
 			//WIN
@@ -229,7 +237,7 @@ public class Logic {
 //				ost.play();
 //				screenNum=6;
 				//if(loadingBoolean == true) {
-					ost.play();
+					//ost.play();
 					screenNum=6;
 				//}
 				
