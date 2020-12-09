@@ -23,6 +23,10 @@ public class Logic {
 	int[][] matrix;
 	SoundFile ost; 	
 	int screenNum;
+	int sec;
+	int timer=0;
+	int cont=0;
+	int cont1=0;
 	public Match name;
 	private LinkedList<Match> match;
 	private CompareDateMatch date;
@@ -116,6 +120,7 @@ public class Logic {
 	
 	
 	public void draw() {
+		
 		switch(screenNum) {
 		case 0:
 			//no se pinta por alguna razón pero permite que cargue el splash page
@@ -151,6 +156,21 @@ public class Logic {
 		case 6:
 			//GAME SCREEN
 			map.draw();
+			sec= PApplet.second();
+			//temporizador 
+			  if(sec > timer) {
+				  timer=sec;
+				 cont++;
+			  }
+			  if(sec>60) {
+				  sec =0;
+			  }
+			  if(cont>=60) {cont1++;}
+			
+		
+			  app.fill(210);
+			  app.textSize(32);
+			  app.text(cont1 + ":"+ cont, 60, 237);
 			break;
 		case 7:
 			//WIN
@@ -161,6 +181,8 @@ public class Logic {
 			lose.draw();
 			break;
 		}
+		
+		
 		
 	}
 	
