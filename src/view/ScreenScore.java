@@ -7,7 +7,8 @@ public class ScreenScore extends Screen {
 	private int score;
 	
 	public ScreenScore(PApplet app) {
-		super(app);
+	super(app);
+	image= app.loadImage("pngs/Pantallas/Puntajes.png");
 	}
 
 	public void validateScore() {
