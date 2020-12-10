@@ -37,12 +37,12 @@ public class Arepa extends Character{
 	
 
 	
-	public int getPosX() {
-		return posX;
+	public int getPosXd() {
+		return 140*(posX);
 	}
 
-	public int getPosY() {
-		return  posY;
+	public int getPosYd() {
+		return  150*(posY-1);
 	}
 
 }

@@ -39,10 +39,12 @@ public class Logic {
 	private CompareTimeMatch time;
 	private Arepa prota;
 
+
 	//Crear las array de los enemigos y monedas
 	private ArrayList<EnemyKnife> cuchillo;
 	private ArrayList<EnemyRat> rata;
 	private ArrayList<Cheese> coin;
+
 
 	private int backX ;
 	int bx;
@@ -64,6 +66,7 @@ public class Logic {
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
 
+
 		//Set de las array de los enemigos y monedas
 		this.cuchillo = new ArrayList<>();
 		this.rata = new ArrayList<>();
@@ -71,6 +74,41 @@ public class Logic {
 		
 
 		screenNum = 1;
+
+		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
+		// no sirve por falta de memoria)
+		// loadingBoolean = false;
+
+//		if(loadingBoolean == false) {
+//			new Thread(
+//				() -> {
+//					try {
+//						while(!loadingBoolean) {
+//							System.out.println("Esta cargando el archivo de arepasTaleOst en un hilo aparte...");
+//							
+//							System.out.println("Si funciono");
+//							loadingBoolean = true;
+//							Thread.sleep(1);
+//							//TimeUnit.MILLISECONDS.sleep(100);
+//							System.out.println(loadingBoolean);
+//						}
+//						//loadingBoolean = true;
+//						//System.out.println(loadingBoolean);
+//						Thread.sleep(1);
+//						TimeUnit.MILLISECONDS.sleep(1);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//				).start();
+//		}
+//		if(loadingBoolean = true) {
+//			ost = new SoundFile(app, "../music/ost.mp3");
+//		}
+
+		screenNum = 0;
+
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
 		register = new ScreenReg(app);
@@ -82,6 +120,7 @@ public class Logic {
 
 		bx=1;
 		backX = 0;
+
 		
 		posX = 1;
 		posY = 2;
@@ -91,7 +130,7 @@ public class Logic {
 
 		//Agregar a las ratas en el lugar indicado.
 		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
-		rata.add(new EnemyRat(backX, 18, 4, 1, 1, app));
+		rata.add(new EnemyRat(backX, 19, 4, 1, 1, app));
 		
 		//Agregar cuchillos salvajes
 		cuchillo.add(new EnemyKnife(backX, 24, 2, app));
@@ -119,6 +158,7 @@ public class Logic {
 		
 		
 		
+
 		matrix = new int[][] {
 
 				/*
@@ -133,7 +173,7 @@ public class Logic {
 				{ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0,0/**/, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0 },
 				{ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0,0/**/, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0 },
 				{ 4, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 1, 0, 0, 0, 0, 1, 1, 0,0/**/, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0/**/, 1, 0, 0, 0, 1, 0, 2, 0, 0, 0/**/, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0 },
-				{ 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1,1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1 },
+				{ 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1,1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1/**/, 1, 1, 1, 1, 1, 1, 1 },
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4,4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4 }, };
 	}
 
@@ -169,7 +209,7 @@ public class Logic {
 			//Acá se pintan el mapa y el protagonista
 			map.draw(backX);
 			prota.draw();
-			
+			colicionRata();
 			//Pintar el método de validar cuando se coge una moneda
 			validarMoneda();
 
@@ -186,12 +226,13 @@ public class Logic {
 			}
 
 			// Temporizador
+
 			if (sec > timer) {
 				timer = sec;
 				cont++;
 			}
-			if (sec >= 60) {
-				timer = 0;
+			if (sec > 60) {
+				sec = 0;
 				
 			}
 			if (cont >= 60) {
@@ -314,10 +355,16 @@ public class Logic {
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
-				
 				// Esto es para que se de play la música
-				//ost.play();
-			screenNum = 6;
+
+
+				ost.play();
+				screenNum = 6;
+//				if(loadingBoolean == true) {
+//					ost.play();
+//					screenNum=6;
+//				}
+
 				break;
 
 			}
@@ -327,11 +374,13 @@ public class Logic {
 	}
 
 	public void move(int i) {
+		if(screenNum==6) {
+		
 	if(bx>=59) {screenNum=7;}
 	if(prota.getPosY()>4) {screenNum=8;}
 		switch (i) {
 		case 0:
-			if (matrix[prota.getPosY()+1][bx] == 1) {
+			if (matrix[prota.getPosY()+1][bx+1] == 1) {
 			prota.move(i);
 			prota.move(i);
 			prota.move(i);
@@ -350,8 +399,9 @@ public class Logic {
 		//Izquierda
 		posX = posX - 1;
 			backX++;
+			
 			move(1);
-				
+			
 			}
 			break;
 		
@@ -361,15 +411,17 @@ public class Logic {
 		//Derecha
 			posX = posX + 1;
 			backX--;
+			if (matrix[prota.getPosY()+1][bx+1] != 1) {
 			move(1);
+			}
 			}
 			
 			break;
 
 		}
-		
+		System.out.println();
 		System.out.println(bx);
-		}
+		}}
 
 	public void sortList(int s) {
 		switch (s) {
@@ -397,11 +449,23 @@ public class Logic {
 				scores2 = scores2 + 100;
 				coin.remove(i);
 			}
-		}
-		
-		
+		}	
 	}
-
+public void colicionRata(){
+	
+	for (int i = 0; i < rata.size(); i++) {
+		rata.get(i).getPosX();
+		rata.get(i).getPosY();
+		prota.getPosX();
+		prota.getPosY();
+	
+	float	d=app.dist(bx, prota.getPosY(), rata.get(i).getPosX(), rata.get(i).getPosY());
+		if(d<1) {screenNum=8;}
+	}
+	
+	
+}
+	
 	public LinkedList<Match> getList() {
 		return match;
 

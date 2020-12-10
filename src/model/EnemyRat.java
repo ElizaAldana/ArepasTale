@@ -46,4 +46,12 @@ public class EnemyRat extends Enemy implements Runnable{
 		app.imageMode(PConstants.CENTER);
 		app.image(rat, ((140*(posX))+65)+140*backX, (150+25)*(posY-1) ,140,140);
 	}
+	public int getPosXd() {
+		
+		return ((140*(posX))+65)+140*backX;
+	}
+	public int getPosYd() {
+		// TODO Auto-generated method stub
+		return  (150+25)*(posY-1);
+	}
 }
