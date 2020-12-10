@@ -22,7 +22,7 @@ public class Logic {
 
 	private PApplet app;
 	int[][] matrix;
-	SoundFile ost;
+	SoundFile ost, coinSound;
 	int screenNum;
 	int sec, scores2;
 	int timer = 0;
@@ -55,7 +55,8 @@ public class Logic {
 
 	public Logic(PApplet app) {
 		this.app = app;
-		// ost = new SoundFile(app, "../music/ost.mp3");
+		ost = new SoundFile(app, "../music/ost.mp3");
+		coinSound = new SoundFile(app,"../music/coin.mp3");
 		match = new LinkedList<Match>();
 		this.date = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
@@ -65,40 +66,7 @@ public class Logic {
 		this.coin = new ArrayList<>();
 		
 
-
-		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
-		// no sirve por falta de memoria)
-		// loadingBoolean = false;
-
-//		if(loadingBoolean == false) {
-//			new Thread(
-//				() -> {
-//					try {
-//						while(!loadingBoolean) {
-//							System.out.println("Esta cargando el archivo de arepasTaleOst en un hilo aparte...");
-//							
-//							System.out.println("Si funciono");
-//							loadingBoolean = true;
-//							Thread.sleep(1);
-//							//TimeUnit.MILLISECONDS.sleep(100);
-//							System.out.println(loadingBoolean);
-//						}
-//						//loadingBoolean = true;
-//						//System.out.println(loadingBoolean);
-//						Thread.sleep(1);
-//						TimeUnit.MILLISECONDS.sleep(1);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//				).start();
-//		}
-//		if(loadingBoolean = true) {
-//			ost = new SoundFile(app, "../music/ost.mp3");
-//		}
-
-		screenNum = 0;
+		screenNum = 1;
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
 		register = new ScreenReg(app);
@@ -113,14 +81,14 @@ public class Logic {
 		
 		posX = 1;
 		posY = 2;
-		prota = new Arepa(0, posX, posY, app);
-		
 		
 		//Agregar al protagonista en el lugar indicado.
-		//prota = new Arepa(0, 1, 4, app);
+		prota = new Arepa(0, posX, posY, app);
+
 		//Agregar a las ratas en el lugar indicado.
 		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
 		rata.add(new EnemyRat(backX, 18, 4, 1, 1, app));
+		
 		//Agregar coin
 		coin.add(new Cheese(backX, 4, 2,app));
 		coin.add(new Cheese(backX, 8, 2,app));
@@ -162,14 +130,6 @@ public class Logic {
 	public void draw() {
 
 		switch (screenNum) {
-		case 0:
-			// no se pinta por alguna razón pero permite que cargue el splash page
-			app.background(255);
-			app.fill(0, 120, 255);
-			app.textSize(50);
-			app.text("loading...", app.width / 2 - 90, app.height / 2);
-			// validarLoading();
-			break;
 		case 1:
 			// SPLASH SCREEN
 			splash.draw();
@@ -186,8 +146,7 @@ public class Logic {
 		case 4:
 			// HOME
 			home.draw();
-			// System.out.println(loadingBoolean);
-			// System.out.println(loadingBoolean);
+	
 			break;
 		case 5:
 			// SCORES
@@ -247,12 +206,6 @@ public class Logic {
 
 	}
 
-//	public void validarLoading() {
-//		if(loadingBoolean == true) {
-//			ost.play();
-//			screenNum=6;
-//		}
-//	}
 
 	public void mouseClicked() {
 		// SWITCH DE CAMBIO DE PANTALLAS
@@ -295,13 +248,10 @@ public class Logic {
 			}
 			// DE HOME A GAME SCREEN
 			if ((637 > app.mouseX && app.mouseX > 363) && (456 > app.mouseY && app.mouseY > 389)) {
-				// Esto es para que se de play la música
-//				ost.play();
-//				screenNum=6;
-				// if(loadingBoolean == true) {
-				// ost.play();
+				
+			// Esto es para que se de play la música
+				ost.play();
 				screenNum = 6;
-				// }
 
 			}
 			break;
@@ -347,10 +297,6 @@ public class Logic {
 				// Esto es para que se de play la música
 				ost.play();
 				screenNum = 6;
-//				if(loadingBoolean == true) {
-//					ost.play();
-//					screenNum=6;
-//				}
 				break;
 
 			}
@@ -382,21 +328,17 @@ public class Logic {
 		bx--;
 		//Izquierda
 		posX = posX - 1;
-		//posXQueso = posX + 1;
-		//System.out.println(posXQueso);
-				backX++;
-				move(1);
+			backX++;
+			move(1);
 				
 			}
 			break;
 		
 		case 3:
-			if (matrix[prota.getPosY()][bx+2] != 1) {
-				bx++;
+		if (matrix[prota.getPosY()][bx+2] != 1) {
+			bx++;
 		//Derecha
-				posX = posX + 1;
-		//posXQueso = posX - 1;
-		//System.out.println(posXQueso);
+			posX = posX + 1;
 			backX--;
 			move(1);
 			}
@@ -429,18 +371,11 @@ public class Logic {
 		
 		for (int i = 0; i < coin.size(); i++) {
 			float distance = PApplet.dist(posX,prota.getPosY(),coin.get(i).getPosX(),coin.get(i).getPosY());
-			//System.out.println(coin.get(i).getPosY());
-			//System.out.println(distance);
-			//System.out.println(coin.get(0).getPosX());
-			//System.out.println(posX);
-			//System.out.println(posX);
-			//System.out.println(prota.getPosY());
-			
-			//System.out.println(posY);
 			if(distance <= 1) {
-				System.out.println("Chupame esta");
+				coinSound.play();
 				scores2 = scores2 + 100;
 				coin.remove(i);
+				//sonidoMoneda.stop();
 			}
 		}
 		
