@@ -306,6 +306,7 @@ public class Logic {
 
 	public void move(int i) {
 	if(bx>=59) {screenNum=7;}
+	if(prota.getPosY()>4) {screenNum=8;}
 		switch (i) {
 		case 0:
 			if (matrix[prota.getPosY()+1][bx] == 1) {

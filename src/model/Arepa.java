@@ -4,8 +4,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 public class Arepa extends Character implements Runnable{
 PImage img;
-	public Arepa(int backX, int posX, float posY, PApplet app) {
-		super(backX, posX, posY, app);
+	public Arepa(int backX, int posX, int posY, PApplet app) {
+		super(backX, posX,  posY, app);
 		// TODO Auto-generated constructor stub
 	img= app.loadImage("./pngs/characters/arepaSize.png");
 		
