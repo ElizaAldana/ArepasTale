@@ -43,6 +43,7 @@ public class Logic {
 	//Crear las array de los enemigos y monedas
 	private ArrayList<EnemyKnife> cuchillo;
 	private ArrayList<EnemyRat> rata;
+	private ArrayList<EnemyFire> fire;
 	private ArrayList<Cheese> coin;
 
 
@@ -70,6 +71,7 @@ public class Logic {
 		//Set de las array de los enemigos y monedas
 		this.cuchillo = new ArrayList<>();
 		this.rata = new ArrayList<>();
+		this.fire = new ArrayList<>();
 		this.coin = new ArrayList<>();
 		
 
@@ -130,13 +132,20 @@ public class Logic {
 
 		//Agregar a las ratas en el lugar indicado.
 		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
-		rata.add(new EnemyRat(backX, 19, 4, 1, 1, app));
+
+		rata.add(new EnemyRat(backX, 23, 4, 1, 1, app));
+
 		
 		//Agregar cuchillos salvajes
 		cuchillo.add(new EnemyKnife(backX, 24, 2, app));
 		cuchillo.add(new EnemyKnife(backX, 26, 2, app));
 		cuchillo.add(new EnemyKnife(backX, 28, 2, app));
+		
+		//Agregar al fuego
+		fire.add(new EnemyFire(backX, 46, 4, app));
+		fire.add(new EnemyFire(backX, 50, 4, app));
 
+		//46, 50
 		
 		//Agregar coin
 		coin.add(new Cheese(backX, 4, 2,app));
@@ -173,7 +182,7 @@ public class Logic {
 				{ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0,0/**/, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0 },
 				{ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0,0/**/, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0 },
 				{ 4, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0/**/, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 1, 0, 0, 0, 0, 1, 1, 0,0/**/, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0/**/, 1, 0, 0, 0, 1, 0, 2, 0, 0, 0/**/, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0/**/, 0, 0, 0, 0, 0, 0, 0 },
-				{ 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1,1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1/**/, 1, 1, 1, 1, 1, 1, 1 },
+				{ 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1,1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1/**/, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1/**/, 1, 1, 1, 1, 1, 1, 1 },
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4,4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4 }, };
 	}
 
@@ -216,6 +225,9 @@ public class Logic {
 			//Aquí se pintan las cositas(enemigos y monedas)
 			for (int i = 0; i < cuchillo.size(); i++) {
 				cuchillo.get(i).draw(backX);
+			}
+			for (int i = 0; i < fire.size(); i++) {
+				fire.get(i).draw(backX);
 			}
 			for (int i = 0; i < rata.size(); i++) {
 				rata.get(i).draw(backX);
