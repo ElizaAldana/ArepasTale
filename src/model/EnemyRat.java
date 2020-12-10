@@ -37,8 +37,8 @@ public class EnemyRat extends Enemy implements Runnable{
 		}
 	}
 	
-	public void draw() {
+	public void draw(int backX) {
 		app.imageMode(PConstants.CENTER);
-		app.image(rat, 180*(posX), 175*(posY-1),140,140);
+		app.image(rat, 180*(posX)+140*backX, 175*(posY-1),140,140);
 	}
 }
