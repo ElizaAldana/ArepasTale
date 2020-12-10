@@ -21,6 +21,33 @@ public class Cheese {
 
 	public void draw(int backX) {
 		app.imageMode(PConstants.CENTER);
-		app.image(cheese, 210*(posX)+140*backX, 60*(posY-1),100,100);
+		app.image(cheese, 140*(posX)+140*backX, 150*(posY-1),100,100);
 	}
+
+
+
+	public int getPosX() {
+		return posX;
+	}
+
+
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+
+
+	public int getPosY() {
+		return posY;
+	}
+
+
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+	
+	
+	
 }

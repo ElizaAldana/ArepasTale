@@ -35,5 +35,13 @@ PImage img;
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return  posY;
+	}
 
 }

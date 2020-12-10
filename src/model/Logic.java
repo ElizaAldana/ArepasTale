@@ -28,6 +28,10 @@ public class Logic {
 	int timer = 0;
 	int cont = 0;
 	int cont1 = 0;
+	
+	int posX;
+	int posY;
+	
 	public Match name;
 	private LinkedList<Match> match;
 	private CompareDateMatch date;
@@ -106,19 +110,33 @@ public class Logic {
 
 		bx=1;
 		backX = 0;
-
-		prota = new Arepa(0, 1, 2, app);
-
+		
+		posX = 1;
+		posY = 2;
+		prota = new Arepa(0, posX, posY, app);
+		
 		
 		//Agregar al protagonista en el lugar indicado.
-		prota = new Arepa(0, 1, 4, app);
+		//prota = new Arepa(0, 1, 4, app);
 		//Agregar a las ratas en el lugar indicado.
 		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
 		rata.add(new EnemyRat(backX, 18, 4, 1, 1, app));
 		//Agregar coin
-		coin.add(new Cheese(backX, 3, 6,app));
-		coin.add(new Cheese(backX, 5, 6,app));
-
+		coin.add(new Cheese(backX, 4, 2,app));
+		coin.add(new Cheese(backX, 8, 2,app));
+		coin.add(new Cheese(backX, 11, 2,app));
+		coin.add(new Cheese(backX, 17, 2,app));
+		coin.add(new Cheese(backX, 21, 2,app));
+		coin.add(new Cheese(backX, 24, 4,app));
+		coin.add(new Cheese(backX, 26, 2,app));
+		coin.add(new Cheese(backX, 32, 2,app));
+		coin.add(new Cheese(backX, 34, 2,app));
+		coin.add(new Cheese(backX, 36, 2,app));
+		coin.add(new Cheese(backX, 40, 2,app));
+		coin.add(new Cheese(backX, 44, 2,app));
+		coin.add(new Cheese(backX, 47, 2,app));
+		coin.add(new Cheese(backX, 49, 2,app));
+		coin.add(new Cheese(backX, 55, 2,app));
 		//int backX, int posX, int posY, int dirX, int vel,PApplet app
 		
 		
@@ -176,13 +194,14 @@ public class Logic {
 			scores.draw();
 			break;
 		case 6:
-
 			// GAME SCREEN
 			sec = PApplet.second();
 
 		
 			map.draw(backX);
 			prota.draw();
+			
+			validarMoneda();
 
 			
 			for (int i = 0; i < rata.size(); i++) {
@@ -192,7 +211,7 @@ public class Logic {
 				coin.get(i).draw(backX);
 			}
 
-			// temporizador
+			// Temporizador
 			if (sec > timer) {
 				timer = sec;
 				cont++;
@@ -355,11 +374,16 @@ public class Logic {
 		case 1:
 			if (matrix[prota.getPosY()+1][bx] != 1) {
 			prota.move(i);
+			posY = posY + 1;
 			}
 			break;
 		case 2:
 			if (matrix[prota.getPosY()][bx] != 1) {
 		bx--;
+		//Izquierda
+		posX = posX - 1;
+		//posXQueso = posX + 1;
+		//System.out.println(posXQueso);
 				backX++;
 				move(1);
 				
@@ -369,6 +393,10 @@ public class Logic {
 		case 3:
 			if (matrix[prota.getPosY()][bx+2] != 1) {
 				bx++;
+		//Derecha
+				posX = posX + 1;
+		//posXQueso = posX - 1;
+		//System.out.println(posXQueso);
 			backX--;
 			move(1);
 			}
@@ -395,6 +423,28 @@ public class Logic {
 			Collections.sort(match, time);
 			break;
 		}
+	}
+	
+	public void validarMoneda() {
+		
+		for (int i = 0; i < coin.size(); i++) {
+			float distance = PApplet.dist(posX,prota.getPosY(),coin.get(i).getPosX(),coin.get(i).getPosY());
+			//System.out.println(coin.get(i).getPosY());
+			//System.out.println(distance);
+			//System.out.println(coin.get(0).getPosX());
+			//System.out.println(posX);
+			//System.out.println(posX);
+			//System.out.println(prota.getPosY());
+			
+			//System.out.println(posY);
+			if(distance <= 1) {
+				System.out.println("Chupame esta");
+				scores2 = scores2 + 100;
+				coin.remove(i);
+			}
+		}
+		
+		
 	}
 
 	public LinkedList<Match> getList() {
