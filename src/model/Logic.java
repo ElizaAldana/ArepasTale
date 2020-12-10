@@ -57,6 +57,7 @@ public class Logic {
 	ScreenScore scores;
 	ScreenWin win;
 	ScreenGameOver lose;
+	Exceptions except;
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -119,6 +120,7 @@ public class Logic {
 		scores = new ScreenScore(app);
 		win = new ScreenWin(app);
 		lose = new ScreenGameOver(app);
+		except = new Exceptions();
 
 		bx=1;
 		backX = 0;
@@ -296,16 +298,22 @@ public class Logic {
 			}
 			//DE LOGIN A HOME
 			if((637>app.mouseX&&app.mouseX>363)&&(582>app.mouseY&&app.mouseY>512)) {
+				login.logU();
+				if(!(except.isNullUser(login.getPassword()))&&!(except.isNullUser(login.getUser()))) {
 				login.hide();
 				screenNum=4;
+				}
 				}
 				break;
 		case 3:
 			//DE REGISTER A LOGIN
 			if((637>app.mouseX&&app.mouseX>363)&&(647>app.mouseY&&app.mouseY>583)) {
+				register.regU();
+				if(!(except.isNullUser(register.getPassword()))&&!(except.isNullUser(register.getUser()))) {
 				register.hide();
 				login.textFields();
 				screenNum=2;
+				}
 				}
 				break;
 
