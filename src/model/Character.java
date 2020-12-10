@@ -12,7 +12,7 @@ abstract class Character {
 	protected PApplet app;
 	PImage cheese;
 
-	public Character(int backX, int posX, int posY2, PApplet app) {
+	public Character(int backX, int posX, int posY, PApplet app) {
 		this.posX = posX;
 		this.posY = posY;
 		this.app = app;
