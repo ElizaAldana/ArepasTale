@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +34,10 @@ public class Logic {
 	private CompareScoreMatch score;
 	private CompareTimeMatch time;
 	private Arepa prota;
+
+	private ArrayList<EnemyRat> rata;
+	private ArrayList<Cheese> coin;
+
 	private int backX ;
 	int bx;
 	ScreenSplash splash;
@@ -51,6 +56,11 @@ public class Logic {
 		this.date = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
+
+		this.rata = new ArrayList<>();
+		this.coin = new ArrayList<>();
+		
+
 
 		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
 		// no sirve por falta de memoria)
@@ -96,7 +106,23 @@ public class Logic {
 
 		bx=1;
 		backX = 0;
+
 		prota = new Arepa(0, 1, 2, app);
+
+		
+		//Agregar al protagonista en el lugar indicado.
+		prota = new Arepa(0, 1, 4, app);
+		//Agregar a las ratas en el lugar indicado.
+		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
+		rata.add(new EnemyRat(backX, 18, 4, 1, 1, app));
+		//Agregar coin
+		coin.add(new Cheese(backX, 3, 6,app));
+		coin.add(new Cheese(backX, 5, 6,app));
+
+		//int backX, int posX, int posY, int dirX, int vel,PApplet app
+		
+		
+		
 		matrix = new int[][] {
 
 				/*
@@ -157,6 +183,15 @@ public class Logic {
 		
 			map.draw(backX);
 			prota.draw();
+
+			
+			for (int i = 0; i < rata.size(); i++) {
+				rata.get(i).draw(backX);
+			}
+			for (int i = 0; i < coin.size(); i++) {
+				coin.get(i).draw(backX);
+			}
+
 			// temporizador
 			if (sec > timer) {
 				timer = sec;
@@ -289,8 +324,8 @@ public class Logic {
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
+				
 				// Esto es para que se de play la música
-
 				ost.play();
 				screenNum = 6;
 //				if(loadingBoolean == true) {

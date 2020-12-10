@@ -27,6 +27,11 @@ public class Main extends PApplet {
 		this.control.draw();
 
 
+		System.out.println(mouseX);
+		System.out.println(mouseY);
+		
+
+
 		/*System.out.println(mouseX);
 		System.out.println(mouseY);
 		*/
