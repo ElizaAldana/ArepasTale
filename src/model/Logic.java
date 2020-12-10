@@ -162,8 +162,9 @@ public class Logic {
 				timer = sec;
 				cont++;
 			}
-			if (sec > 60) {
-				sec = 0;
+			if (sec >= 60) {
+				timer = 0;
+				
 			}
 			if (cont >= 60) {
 				cont1++;
