@@ -17,4 +17,6 @@ public int BGx;
 		app.image(image,140*(x),0,9004,app.height);
 	}
 	
+	
+	
 }

@@ -96,7 +96,7 @@ public class Logic {
 
 		bx=1;
 		backX = 0;
-		prota = new Arepa(0, 1, 4, app);
+		prota = new Arepa(0, 1, 2, app);
 		matrix = new int[][] {
 
 				/*
@@ -305,7 +305,7 @@ public class Logic {
 	}
 
 	public void move(int i) {
-	if(bx>=58) {screenNum=7;}
+	if(bx>=59) {screenNum=7;}
 		switch (i) {
 		case 0:
 			if (matrix[prota.getPosY()+1][bx] == 1) {

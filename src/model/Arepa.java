@@ -30,7 +30,7 @@ PImage img;
 		app.image(img, 140*(posX), 150*(posY-1),140,140);
 	}
 
-	@Override
+	
 	public void run() {
 		// TODO Auto-generated method stub
 		

@@ -5,7 +5,7 @@ import controlP5.Textfield;
 import processing.core.PApplet;
 
 public class ScreenReg extends Screen {
-
+	String user,password;
 	public ScreenReg(PApplet app) {
 		super(app);
 		image= app.loadImage("pngs/Pantallas/Registro.png");
@@ -45,5 +45,22 @@ public class ScreenReg extends Screen {
 	public void clear() {
 		cp5.get(Textfield.class,"user").clear();
 		cp5.get(Textfield.class,"password").clear();
+	}
+	public void regU() {
+		
+		user = cp5.get(Textfield.class,"user").getText();
+		password = cp5.get(Textfield.class,"password").getText();
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
