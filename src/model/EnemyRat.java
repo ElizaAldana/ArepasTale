@@ -31,15 +31,19 @@ public class EnemyRat extends Enemy implements Runnable{
 
 	
 	public void move() {
-		posX = posX + dirX*vel;
-		if(this.posX >= 20 || this.posX <= 200 || this.posX >= 400 || this.posX <= 500) {
-			this.dirX = this.dirX*-1;
+		//int a = posX;
+		posX = posX + vel*dirX;
+		if(posX <= 5) {
+			dirX = dirX*-1;
 		}
+		if(posX >= 8) {
+			dirX = dirX*-11;
+		}
+		
 	}
 	
 	public void draw(int backX) {
 		app.imageMode(PConstants.CENTER);
-		//app.image(rat, 180*(posX)+140*backX, 150*(posY-1),140,140);
-		app.image(rat, 180*posX+140*backX, 175*(posY-1) ,140,140);
+		app.image(rat, ((140*(posX))+65)+140*backX, (150+25)*(posY-1) ,140,140);
 	}
 }

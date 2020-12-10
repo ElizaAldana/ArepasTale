@@ -39,6 +39,8 @@ public class Logic {
 	private CompareTimeMatch time;
 	private Arepa prota;
 
+	//Crear las array de los enemigos y monedas
+	private ArrayList<EnemyKnife> cuchillo;
 	private ArrayList<EnemyRat> rata;
 	private ArrayList<Cheese> coin;
 
@@ -55,13 +57,15 @@ public class Logic {
 
 	public Logic(PApplet app) {
 		this.app = app;
-		ost = new SoundFile(app, "../music/ost.mp3");
-		coinSound = new SoundFile(app,"../music/coin.mp3");
+		//ost = new SoundFile(app, "../music/ost.mp3");
+		//coinSound = new SoundFile(app,"../music/coin.mp3");
 		match = new LinkedList<Match>();
 		this.date = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
 
+		//Set de las array de los enemigos y monedas
+		this.cuchillo = new ArrayList<>();
 		this.rata = new ArrayList<>();
 		this.coin = new ArrayList<>();
 		
@@ -89,6 +93,12 @@ public class Logic {
 		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
 		rata.add(new EnemyRat(backX, 18, 4, 1, 1, app));
 		
+		//Agregar cuchillos salvajes
+		cuchillo.add(new EnemyKnife(backX, 24, 2, app));
+		cuchillo.add(new EnemyKnife(backX, 26, 2, app));
+		cuchillo.add(new EnemyKnife(backX, 28, 2, app));
+
+		
 		//Agregar coin
 		coin.add(new Cheese(backX, 4, 2,app));
 		coin.add(new Cheese(backX, 8, 2,app));
@@ -96,10 +106,10 @@ public class Logic {
 		coin.add(new Cheese(backX, 17, 2,app));
 		coin.add(new Cheese(backX, 21, 2,app));
 		coin.add(new Cheese(backX, 24, 4,app));
-		coin.add(new Cheese(backX, 26, 2,app));
+		coin.add(new Cheese(backX, 27, 2,app));
 		coin.add(new Cheese(backX, 32, 2,app));
 		coin.add(new Cheese(backX, 34, 2,app));
-		coin.add(new Cheese(backX, 36, 2,app));
+		coin.add(new Cheese(backX, 37, 2,app));
 		coin.add(new Cheese(backX, 40, 2,app));
 		coin.add(new Cheese(backX, 44, 2,app));
 		coin.add(new Cheese(backX, 47, 2,app));
@@ -156,15 +166,20 @@ public class Logic {
 			// GAME SCREEN
 			sec = PApplet.second();
 
-		
+			//Acá se pintan el mapa y el protagonista
 			map.draw(backX);
 			prota.draw();
 			
+			//Pintar el método de validar cuando se coge una moneda
 			validarMoneda();
 
-			
+			//Aquí se pintan las cositas(enemigos y monedas)
+			for (int i = 0; i < cuchillo.size(); i++) {
+				cuchillo.get(i).draw(backX);
+			}
 			for (int i = 0; i < rata.size(); i++) {
 				rata.get(i).draw(backX);
+				
 			}
 			for (int i = 0; i < coin.size(); i++) {
 				coin.get(i).draw(backX);
@@ -250,8 +265,14 @@ public class Logic {
 			if ((637 > app.mouseX && app.mouseX > 363) && (456 > app.mouseY && app.mouseY > 389)) {
 				
 			// Esto es para que se de play la música
-				ost.play();
-				screenNum = 6;
+				//ost.play();
+			screenNum = 6;
+			
+			//hilo rata
+			for (int i = 0; i < rata.size(); i++) {
+				new Thread(rata.get(i)).start();
+			}
+			
 
 			}
 			break;
@@ -295,8 +316,8 @@ public class Logic {
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
 				
 				// Esto es para que se de play la música
-				ost.play();
-				screenNum = 6;
+				//ost.play();
+			screenNum = 6;
 				break;
 
 			}
@@ -372,10 +393,9 @@ public class Logic {
 		for (int i = 0; i < coin.size(); i++) {
 			float distance = PApplet.dist(posX,prota.getPosY(),coin.get(i).getPosX(),coin.get(i).getPosY());
 			if(distance <= 1) {
-				coinSound.play();
+				//coinSound.play();
 				scores2 = scores2 + 100;
 				coin.remove(i);
-				//sonidoMoneda.stop();
 			}
 		}
 		

@@ -1,16 +1,19 @@
 package model;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
-public class Arepa extends Character implements Runnable{
-PImage img;
+
+public class Arepa extends Character{
+	PImage img;
+	
 	public Arepa(int backX, int posX, int posY, PApplet app) {
 		super(backX, posX,  posY, app);
 		// TODO Auto-generated constructor stub
-	img= app.loadImage("./pngs/characters/arepaSize.png");
+		img= app.loadImage("./pngs/characters/arepaSize.png");
 		
 	}
-
+	
 	public void move(int d) {
 	
 		switch (d) {
@@ -23,18 +26,16 @@ PImage img;
 			posY = posY +1;
 			
 			
-			break;}
+			break;
+			}
 	}
 	public void draw() {
-		app.imageMode(app.CORNER);
+		app.imageMode(PConstants.CORNER);
 		app.image(img, 140*(posX), 150*(posY-1),140,140);
 	}
 
 	
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	public int getPosX() {
 		return posX;
