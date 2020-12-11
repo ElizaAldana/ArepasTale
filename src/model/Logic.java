@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.sound.SoundFile;
 import view.ScreenGame;
 import view.ScreenGameOver;
@@ -58,6 +59,9 @@ public class Logic {
 	ScreenWin win;
 	ScreenGameOver lose;
 	Exceptions except;
+	
+	PImage timeField;
+	PImage scoreField;
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -76,7 +80,7 @@ public class Logic {
 		this.coin = new ArrayList<>();
 		
 
-		screenNum = 1;
+		screenNum = 6;
 
 		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
 		// no sirve por falta de memoria)
@@ -110,7 +114,7 @@ public class Logic {
 //			ost = new SoundFile(app, "../music/ost.mp3");
 //		}
 
-		screenNum = 0;
+
 
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
@@ -168,7 +172,9 @@ public class Logic {
 		//int backX, int posX, int posY, int dirX, int vel,PApplet app
 		
 		
-		
+		//Agregar los pngs de los campos de tiempo y puntaje
+		timeField = app.loadImage("pngs/characters/Time.png");
+		scoreField = app.loadImage("pngs/characters/Score.png");
 
 		matrix = new int[][] {
 
@@ -255,13 +261,13 @@ public class Logic {
 
 			app.fill(238, 19, 19);
 			app.textSize(25);
-			app.text(cont1 + ":" + cont, 150, 30);
-			app.text("Timer:", 60, 30);
+			app.text(cont1 + ":" + cont, 65, 38);
+			app.image(timeField, 80, 30,121,41);
 
 			app.fill(238, 19, 19);
 			app.textSize(25);
-			app.text("Score:", 230, 30);
-			app.text(scores2, 315, 30);
+			app.image(scoreField, 250, 30,121,41);
+			app.text(scores2, 235, 38);
 
 			break;
 		case 7:
