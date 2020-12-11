@@ -44,5 +44,7 @@ public class Arepa extends Character{
 	public int getPosYd() {
 		return  150*(posY-1);
 	}
-
+public void setY(int y) {
+	this.posY=y;
+}
 }
