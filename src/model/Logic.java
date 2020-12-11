@@ -1,7 +1,10 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -29,12 +32,14 @@ public class Logic {
 	int cont = 0;
 	int cont1 = 0;
 	
+	
+	
 	int posX;
 	int posY;
 	
 	public Match name;
 	private LinkedList<Match> match;
-	private CompareDateMatch date;
+	private CompareDateMatch dates;
 	private CompareScoreMatch score;
 	private CompareTimeMatch time;
 	private Arepa prota;
@@ -64,7 +69,7 @@ public class Logic {
 		//ost = new SoundFile(app, "../music/ost.mp3");
 		//coinSound = new SoundFile(app,"../music/coin.mp3");
 		match = new LinkedList<Match>();
-		this.date = new CompareDateMatch();
+		this.dates = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
 
@@ -188,6 +193,14 @@ public class Logic {
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4,4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4 }, };
 	}
 
+	
+	public String getDate(){
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    Date date = new Date();
+
+	    return dateFormat.format(date);
+	}
+	
 	public void draw() {
 
 		switch (screenNum) {
@@ -223,7 +236,8 @@ public class Logic {
 			colicionRata();
 			//Pintar el método de validar cuando se coge una moneda
 			validarMoneda();
-
+			getDate();
+			
 			//Aquí se pintan las cositas(enemigos y monedas)
 			for (int i = 0; i < cuchillo.size(); i++) {
 				cuchillo.get(i).draw(backX);
@@ -262,7 +276,10 @@ public class Logic {
 			app.textSize(25);
 			app.text("Score:", 230, 30);
 			app.text(scores2, 315, 30);
-
+			
+			//Esto era para pintar en el mapa pero no es necesario, era para saber si funciona date
+//			app.text("Date:", 400, 30); 
+//			app.text(getDate(), 480, 30);
 			break;
 		case 7:
 			// WIN
@@ -331,7 +348,7 @@ public class Logic {
 			if ((637 > app.mouseX && app.mouseX > 363) && (456 > app.mouseY && app.mouseY > 389)) {
 				
 			// Esto es para que se de play la música
-				//ost.play();
+			//ost.play();
 			screenNum = 6;
 			
 			//hilo rata
@@ -457,7 +474,7 @@ restartGame();
 			Collections.sort(match);
 			break;
 		case 1:
-			Collections.sort(match, date);
+			Collections.sort(match, dates);
 			break;
 		case 2:
 			Collections.sort(match, score);
