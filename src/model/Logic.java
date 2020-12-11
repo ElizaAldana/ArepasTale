@@ -87,39 +87,6 @@ public class Logic {
 
 		screenNum = 6;
 
-		// ----------NO FUNCIONA---------- (hilo para que cargue mï¿½s rï¿½pido la mï¿½sica,
-		// no sirve por falta de memoria)
-		// loadingBoolean = false;
-
-//		if(loadingBoolean == false) {
-//			new Thread(
-//				() -> {
-//					try {
-//						while(!loadingBoolean) {
-//							System.out.println("Esta cargando el archivo de arepasTaleOst en un hilo aparte...");
-//							
-//							System.out.println("Si funciono");
-//							loadingBoolean = true;
-//							Thread.sleep(1);
-//							//TimeUnit.MILLISECONDS.sleep(100);
-//							System.out.println(loadingBoolean);
-//						}
-//						//loadingBoolean = true;
-//						//System.out.println(loadingBoolean);
-//						Thread.sleep(1);
-//						TimeUnit.MILLISECONDS.sleep(1);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//				).start();
-//		}
-//		if(loadingBoolean = true) {
-//			ost = new SoundFile(app, "../music/ost.mp3");
-//		}
-
-
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
 		register = new ScreenReg(app);
@@ -239,7 +206,8 @@ public class Logic {
 			map.draw(backX);
 			prota.draw();
 			colicionRata();
-			//Pintar el mï¿½todo de validar cuando se coge una moneda
+
+			//Pintar el método de validar cuando se coge una moneda
 			validarMoneda();
 			getDate();
 			
@@ -265,8 +233,7 @@ public class Logic {
 				cont++;
 			}
 			if (sec > 60) {
-				sec = 0;
-				
+				sec = 0;	
 			}
 			if (cont >= 60) {
 				cont1++;

@@ -31,6 +31,21 @@ public class Match implements Comparable <Match>{
 		y+=70;
 	}
 	
+	public void drawName(int x, int y) {
+		app.text(this.name, x, y);
+	}
+	
+	public void drawDate(int x, int y) {
+		app.text(this.date, x, y);
+	}
+	
+	public void drawScore(int x, int y) {
+		app.text(this.score, x, y);
+	}
+	
+	public void drawTime(int x, int y) {
+		app.text(this.time, x, y);
+	}
 	
 	
 	//Getters & Setters
