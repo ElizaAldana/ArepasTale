@@ -1,11 +1,15 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.sound.SoundFile;
 import view.ScreenGame;
 import view.ScreenGameOver;
@@ -29,12 +33,14 @@ public class Logic {
 	int cont = 0;
 	int cont1 = 0;
 	
+	
+	
 	int posX;
 	int posY;
 	
 	public Match name;
 	private LinkedList<Match> match;
-	private CompareDateMatch date;
+	private CompareDateMatch dates;
 	private CompareScoreMatch score;
 	private CompareTimeMatch time;
 	private Arepa prota;
@@ -58,13 +64,16 @@ public class Logic {
 	ScreenWin win;
 	ScreenGameOver lose;
 	Exceptions except;
+	
+	PImage timeField;
+	PImage scoreField;
 
 	public Logic(PApplet app) {
 		this.app = app;
 		//ost = new SoundFile(app, "../music/ost.mp3");
 		//coinSound = new SoundFile(app,"../music/coin.mp3");
 		match = new LinkedList<Match>();
-		this.date = new CompareDateMatch();
+		this.dates = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
 
@@ -78,7 +87,7 @@ public class Logic {
 
 		screenNum = 6;
 
-		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
+		// ----------NO FUNCIONA---------- (hilo para que cargue mï¿½s rï¿½pido la mï¿½sica,
 		// no sirve por falta de memoria)
 		// loadingBoolean = false;
 
@@ -110,7 +119,6 @@ public class Logic {
 //			ost = new SoundFile(app, "../music/ost.mp3");
 //		}
 
-		
 
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
@@ -168,13 +176,15 @@ public class Logic {
 		//int backX, int posX, int posY, int dirX, int vel,PApplet app
 		
 		
-		
+		//Agregar los pngs de los campos de tiempo y puntaje
+		timeField = app.loadImage("pngs/characters/Time.png");
+		scoreField = app.loadImage("pngs/characters/Score.png");
 
 		matrix = new int[][] {
 
 				/*
-				 * 0 = zonas vacías 1 = piso 2 = zonas de daño 3 = cuadros de muerte 4 =
-				 * bloqueos /** esto esta puesto cada 10 casillas para usarlo como guía para
+				 * 0 = zonas vacï¿½as 1 = piso 2 = zonas de daï¿½o 3 = cuadros de muerte 4 =
+				 * bloqueos /** esto esta puesto cada 10 casillas para usarlo como guï¿½a para
 				 * orgnizar el arreglo
 				 * 
 				 * 
@@ -188,6 +198,14 @@ public class Logic {
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4,4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4 }, };
 	}
 
+	
+	public String getDate(){
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    Date date = new Date();
+
+	    return dateFormat.format(date);
+	}
+	
 	public void draw() {
 
 		switch (screenNum) {
@@ -217,14 +235,15 @@ public class Logic {
 			// GAME SCREEN
 			sec = PApplet.second();
 
-			//Acá se pintan el mapa y el protagonista
+			//Acï¿½ se pintan el mapa y el protagonista
 			map.draw(backX);
 			prota.draw();
 			colicionRata();
-			//Pintar el método de validar cuando se coge una moneda
+			//Pintar el mï¿½todo de validar cuando se coge una moneda
 			validarMoneda();
-
-			//Aquí se pintan las cositas(enemigos y monedas)
+			getDate();
+			
+			//Aquï¿½ se pintan las cositas(enemigos y monedas)
 			for (int i = 0; i < cuchillo.size(); i++) {
 				cuchillo.get(i).draw(backX);
 			}
@@ -255,13 +274,16 @@ public class Logic {
 
 			app.fill(238, 19, 19);
 			app.textSize(25);
-			app.text(cont1 + ":" + cont, 150, 30);
-			app.text("Timer:", 60, 30);
+			app.text(cont1 + ":" + cont, 65, 38);
+			app.image(timeField, 80, 30,121,41);
 
 			app.fill(238, 19, 19);
 			app.textSize(25);
-			app.text("Score:", 230, 30);
-			app.text(scores2, 315, 30);
+
+			app.image(scoreField, 250, 30,121,41);
+			app.text(scores2, 235, 38);
+
+			
 
 			break;
 		case 7:
@@ -330,8 +352,8 @@ public class Logic {
 			// DE HOME A GAME SCREEN
 			if ((637 > app.mouseX && app.mouseX > 363) && (456 > app.mouseY && app.mouseY > 389)) {
 				
-			// Esto es para que se de play la música
-				//ost.play();
+			// Esto es para que se de play la mï¿½sica
+			//ost.play();
 			screenNum = 6;
 			
 			//hilo rata
@@ -380,7 +402,7 @@ public class Logic {
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
-				// Esto es para que se de play la música
+				// Esto es para que se de play la mï¿½sica
 restartGame();
 
 				//ost.play();
@@ -461,7 +483,7 @@ restartGame();
 			Collections.sort(match);
 			break;
 		case 1:
-			Collections.sort(match, date);
+			Collections.sort(match, dates);
 			break;
 		case 2:
 			Collections.sort(match, score);
