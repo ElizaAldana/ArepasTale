@@ -400,7 +400,10 @@ public class Logic {
 		
 	if(bx>=58) {screenNum=7;
 	win.textFields();}
-	if(prota.getPosY()>4) {screenNum=8;}
+	if(prota.getPosY()>4) {
+		screenNum=8;
+		ost.stop();
+		}
 	if(bx>=58) {
 		
 		//Validar ganar
@@ -499,19 +502,28 @@ public void colicionRata(){
 	for (int i = 0; i < rata.size(); i++) {
 		
 	float	d=app.dist(bx, prota.getPosY(), rata.get(i).getPosX(), rata.get(i).getPosY());
-		if(d<1) {screenNum=8;}
+		if(d<1) {
+			screenNum=8;
+			ost.stop();
+			}
 	}
 	
 	//medir toque de los cuchillos
 	for (int i = 0; i < cuchillo.size(); i++) {
 		float	d1=app.dist(bx, prota.getPosY(), (cuchillo.get(i).getPosX()), cuchillo.get(i).getPosY());
-		if(d1<1) {screenNum=8;}
+		if(d1<1) {
+			screenNum=8;
+			ost.stop();	
+		}
 	}
 	
 	// medir toque del fuego
 	for (int i = 0; i < fire.size(); i++) {
 		float	d2=app.dist(bx, prota.getPosY(), fire.get(i).getPosX(), fire.get(i).getPosY());
-		if(d2<1) {screenNum=8;}
+		if(d2<1) {
+			screenNum=8;
+			ost.stop();	
+		}
 	}
 	
 }
