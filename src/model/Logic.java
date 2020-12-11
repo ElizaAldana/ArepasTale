@@ -68,8 +68,8 @@ public class Logic {
 
 	public Logic(PApplet app) {
 		this.app = app;
-		//ost = new SoundFile(app, "../music/ost.mp3");
-		//coinSound = new SoundFile(app,"../music/coin.mp3");
+		ost = new SoundFile(app, "../music/ost.mp3");
+		coinSound = new SoundFile(app,"../music/coin.mp3");
 		match = new LinkedList<Match>();
 		this.date = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
@@ -315,7 +315,7 @@ public class Logic {
 			if ((637 > app.mouseX && app.mouseX > 363) && (456 > app.mouseY && app.mouseY > 389)) {
 				
 			// Esto es para que se de play la música
-				//ost.play();
+			ost.play();
 			screenNum = 6;
 			
 			//hilo rata
@@ -381,7 +381,7 @@ screenNum=6;
 				// Esto es para que se de play la mï¿½sica
 				restartGame();
 
-				//ost.play();
+				ost.play();
 				//screenNum = 6;
 //				if(loadingBoolean == true) {
 //					ost.play();
@@ -406,7 +406,6 @@ screenNum=6;
 		
 		//Validar ganar
 		screenNum=7;
-		//match.add(new Match());
 		win.metodo();
 		String name = win.getName();
 		match.add(new Match(name,getDate(),scores2,timer,app));	
@@ -490,7 +489,7 @@ screenNum=6;
 		for (int i = 0; i < coin.size(); i++) {
 			float distance = PApplet.dist(posX,prota.getPosY(),coin.get(i).getPosX(),coin.get(i).getPosY());
 			if(distance <= 1) {
-				//coinSound.play();
+				coinSound.play();
 				scores2 = scores2 + 100;
 				coin.remove(i);
 			}
