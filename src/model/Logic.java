@@ -110,7 +110,7 @@ public class Logic {
 //			ost = new SoundFile(app, "../music/ost.mp3");
 //		}
 
-		screenNum = 0;
+		screenNum = 6;
 
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
@@ -300,9 +300,11 @@ public class Logic {
 			if((637>app.mouseX&&app.mouseX>363)&&(582>app.mouseY&&app.mouseY>512)) {
 				login.logU();
 				if(!(except.isNullUser(login.getPassword()))&&!(except.isNullUser(login.getUser()))) {
+					if(!except.notRegInSystem(register.getUser(), register.getPassword())) {
 				login.hide();
 				screenNum=4;
-				}
+						}
+					}
 				}
 				break;
 		case 3:
@@ -310,10 +312,13 @@ public class Logic {
 			if((637>app.mouseX&&app.mouseX>363)&&(647>app.mouseY&&app.mouseY>583)) {
 				register.regU();
 				if(!(except.isNullUser(register.getPassword()))&&!(except.isNullUser(register.getUser()))) {
+					if(except.minCharPassword(register.getPassword())
+					 &&except.minCharUser(register.getUser())
+				     &&except.numPassword(register.getPassword())) {
 				register.hide();
 				login.textFields();
 				screenNum=2;
-				}
+				}}
 				}
 				break;
 
@@ -396,7 +401,8 @@ public class Logic {
 	public void move(int i) {
 		if(screenNum==6) {
 		
-	if(bx>=59) {screenNum=7;}
+	if(bx>=59) {screenNum=7;
+	win.textFields();}
 	if(prota.getPosY()>4) {screenNum=8;}
 		switch (i) {
 		case 0:
