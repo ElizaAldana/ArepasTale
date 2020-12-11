@@ -46,8 +46,8 @@ public boolean minCharUser(String e) {
 		
 		for (int i = 0; i < e.length(); i++) {
 			   
-			if((e.charAt(i)==0)||(e.charAt(i)==1)||(e.charAt(i)==2)||(e.charAt(i)==3)||(e.charAt(i)==4)||
-			   (e.charAt(i)==5)||(e.charAt(i)==6)||(e.charAt(i)==7)||(e.charAt(i)==8)||(e.charAt(i)==9)) {
+			if((e.charAt(i)=='0')||(e.charAt(i)=='1')||(e.charAt(i)=='2')||(e.charAt(i)=='3')||(e.charAt(i)=='4')||
+			   (e.charAt(i)=='5')||(e.charAt(i)=='6')||(e.charAt(i)=='7')||(e.charAt(i)=='8')||(e.charAt(i)=='9')) {
 				return true;
 			}
 			

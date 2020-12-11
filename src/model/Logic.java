@@ -110,7 +110,7 @@ public class Logic {
 //			ost = new SoundFile(app, "../music/ost.mp3");
 //		}
 
-		screenNum = 6;
+		screenNum = 0;
 
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
