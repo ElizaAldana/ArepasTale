@@ -83,7 +83,7 @@ public class Logic {
 		this.coin = new ArrayList<>();
 		
 
-		screenNum = 6;
+		screenNum = 1;
 
 		
 		
@@ -375,12 +375,11 @@ public class Logic {
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
-				// Esto es para que se de play la música
-restartGame();
-screenNum=6;
-				// Esto es para que se de play la mï¿½sica
 				restartGame();
+				screenNum=6;
 
+
+				// Esto es para que se de play la música
 				ost.play();
 				//screenNum = 6;
 //				if(loadingBoolean == true) {
