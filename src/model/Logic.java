@@ -427,7 +427,11 @@ restartGame();
 		
 	if(bx>=58) {screenNum=7;
 	win.textFields();}
-	if(prota.getPosY()>4) {screenNum=8;}
+	
+	if(prota.getPosY()>4) {screenNum=8;coin.removeAll(coin);}
+	
+	
+	
 		switch (i) {
 		case 0:
 			if (matrix[prota.getPosY()+1][bx+1] == 1) {
@@ -508,27 +512,30 @@ public void colicionRata(){
 	for (int i = 0; i < rata.size(); i++) {
 		
 	float	d=app.dist(bx, prota.getPosY(), rata.get(i).getPosX(), rata.get(i).getPosY());
-		if(d<1) {screenNum=8;}
+		if(d<1) {screenNum=8;coin.removeAll(coin);}
+		
 	}
 	
 	//medir toque de los cuchillos
 	for (int i = 0; i < cuchillo.size(); i++) {
 		float	d1=app.dist(bx, prota.getPosY(), (cuchillo.get(i).getPosX()), cuchillo.get(i).getPosY());
-		if(d1<1) {screenNum=8;}
+		if(d1<1) {screenNum=8;coin.removeAll(coin);}
+		
 	}
 	
 	// medir toque del fuego
 	for (int i = 0; i < fire.size(); i++) {
 		float	d2=app.dist(bx, prota.getPosY(), fire.get(i).getPosX(), fire.get(i).getPosY());
-		if(d2<1) {screenNum=8;}
+		if(d2<1) {screenNum=8;coin.removeAll(coin);}
+		
 	}
 	
 }
 public void restartGame() {
-	for (int i = 0; i < coin.size(); i++) {
-		coin.remove(i);
-		
-	}
+	
+	
+	
+	backX=0;
 	coin.add(new Cheese(backX, 4, 2,app));
 	coin.add(new Cheese(backX, 8, 2,app));
 	coin.add(new Cheese(backX, 11, 2,app));
@@ -544,9 +551,11 @@ public void restartGame() {
 	coin.add(new Cheese(backX, 47, 2,app));
 	coin.add(new Cheese(backX, 49, 2,app));
 	coin.add(new Cheese(backX, 55, 2,app));
-	screenNum=6;
+	
 	scores2=0;
-	backX=0;
+	screenNum=6;
+	
+	
 	prota.setY(4);
 	bx=1;
 	sec=0;
