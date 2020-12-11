@@ -76,7 +76,7 @@ public class Logic {
 		this.coin = new ArrayList<>();
 		
 
-		screenNum = 1;
+		screenNum = 6;
 
 		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
 		// no sirve por falta de memoria)
@@ -110,7 +110,7 @@ public class Logic {
 //			ost = new SoundFile(app, "../music/ost.mp3");
 //		}
 
-		screenNum = 0;
+		
 
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
@@ -139,9 +139,9 @@ public class Logic {
 
 		
 		//Agregar cuchillos salvajes
-		cuchillo.add(new EnemyKnife(backX, 24, 2, app));
-		cuchillo.add(new EnemyKnife(backX, 26, 2, app));
-		cuchillo.add(new EnemyKnife(backX, 28, 2, app));
+		cuchillo.add(new EnemyKnife(backX, 31, 2, app));
+		cuchillo.add(new EnemyKnife(backX, 33, 2, app));
+		cuchillo.add(new EnemyKnife(backX, 35, 2, app));
 		
 		//Agregar al fuego
 		fire.add(new EnemyFire(backX, 46, 4, app));
@@ -478,17 +478,24 @@ public class Logic {
 		}	
 	}
 public void colicionRata(){
-	
+	//medir toque de las ratas
 	for (int i = 0; i < rata.size(); i++) {
-		rata.get(i).getPosX();
-		rata.get(i).getPosY();
-		prota.getPosX();
-		prota.getPosY();
-	
+		
 	float	d=app.dist(bx, prota.getPosY(), rata.get(i).getPosX(), rata.get(i).getPosY());
 		if(d<1) {screenNum=8;}
 	}
 	
+	//medir toque de los cuchillos
+	for (int i = 0; i < cuchillo.size(); i++) {
+		float	d1=app.dist(bx, prota.getPosY(), (cuchillo.get(i).getPosX()), cuchillo.get(i).getPosY());
+		if(d1<1) {screenNum=8;}
+	}
+	
+	// medir toque del fuego
+	for (int i = 0; i < fire.size(); i++) {
+		float	d2=app.dist(bx, prota.getPosY(), fire.get(i).getPosX(), fire.get(i).getPosY());
+		if(d2<1) {screenNum=8;}
+	}
 	
 }
 	

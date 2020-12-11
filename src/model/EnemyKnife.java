@@ -19,7 +19,7 @@ public class EnemyKnife extends Enemy{
 	
 	public void draw(int backX) {
 		app.imageMode(PConstants.CENTER);
-		app.image(cuchillo, 180*posX+140*backX, 175*(posY-1) ,45,219);
+		app.image(cuchillo, ((140*(posX))+65)+140*backX, 150*(posY-1) ,45,219);
 	}
 	
 
