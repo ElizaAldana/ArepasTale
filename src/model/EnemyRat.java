@@ -47,5 +47,7 @@ public class EnemyRat extends Enemy implements Runnable{
 		app.image(rat, ((140*(posX))+65)+140*backX, (150+25)*(posY-1) ,140,140);
 	}
 	
-	
+	public void set(int x) {
+		this.posX=x;
+	}
 }
