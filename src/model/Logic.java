@@ -401,7 +401,7 @@ restartGame();
 	public void move(int i) {
 		if(screenNum==6) {
 		
-	if(bx>59) {screenNum=7;
+	if(bx>=58) {screenNum=7;
 	win.textFields();}
 	if(prota.getPosY()>4) {screenNum=8;}
 		switch (i) {
