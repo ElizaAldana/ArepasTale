@@ -12,7 +12,7 @@ public class Exceptions {
 	}
 public boolean isNullUser(String e) {
 if(e.trim().isEmpty()) {
-	JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos", "Woops", JOptionPane.ERROR_MESSAGE);
+	JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos de registro", "Woops", JOptionPane.ERROR_MESSAGE);
 	return true;
 }else {
 	return false;
@@ -20,7 +20,7 @@ if(e.trim().isEmpty()) {
 }
 public boolean isNullLog(String e) {
 if(e.trim().isEmpty()) {
-	JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos", "Woops", JOptionPane.ERROR_MESSAGE);
+	JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos de ingreso", "Woops", JOptionPane.ERROR_MESSAGE);
 	return true;
 }else {
 	return false;
@@ -62,5 +62,12 @@ public boolean minCharUser(String e) {
 			return false;
 		}
 		}
+	public boolean isNullMatch(int e) {
+		if(e==0) {
+			return true;
+		}else {return false;
+		}
+		
+	}
 
 }

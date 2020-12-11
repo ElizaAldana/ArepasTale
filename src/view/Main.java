@@ -36,16 +36,16 @@ public class Main extends PApplet {
 	public void keyPressed() {
 		if (keyUse) {
 			switch (keyCode) {
-			case UP:
+			case 87:
 				control.move(0);
 				keyUse=false;
 				break;
-			case LEFT:
+			case 65:
 				control.move(2);
 				keyUse=false;
 
 				break;
-			case RIGHT:
+			case 68:
 
 				control.move(3);
 				keyUse=false;
