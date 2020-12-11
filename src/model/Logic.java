@@ -113,8 +113,7 @@ public class Logic {
 
 		//Agregar a las ratas en el lugar indicado.
 		rata.add(new EnemyRat(backX, 5, 4, 1, 1, app));
-
-		rata.add(new EnemyRat(backX, 23, 4, 1, 1, app));
+		rata.add(new EnemyRat(0, 28, 4, 1, 1, app));
 
 		
 		//Agregar cuchillos salvajes
