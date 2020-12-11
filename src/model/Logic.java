@@ -366,10 +366,10 @@ public class Logic {
 			break;
 		case 7:
 
-			//DE WIN A HOME
+			//DE WIN A PUNTAJE
 			if((620>app.mouseX&&app.mouseX>350)&&(672>app.mouseY&&app.mouseY>602)) {
 				win.hide();
-				screenNum=4;
+				screenNum=5;
 				}
 				break;
 
