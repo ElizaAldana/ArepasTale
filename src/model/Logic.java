@@ -1,15 +1,11 @@
 package model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import processing.core.PApplet;
-import processing.core.PImage;
 import processing.sound.SoundFile;
 import view.ScreenGame;
 import view.ScreenGameOver;
@@ -33,14 +29,12 @@ public class Logic {
 	int cont = 0;
 	int cont1 = 0;
 	
-	
-	
 	int posX;
 	int posY;
 	
 	public Match name;
 	private LinkedList<Match> match;
-	private CompareDateMatch dates;
+	private CompareDateMatch date;
 	private CompareScoreMatch score;
 	private CompareTimeMatch time;
 	private Arepa prota;
@@ -64,16 +58,13 @@ public class Logic {
 	ScreenWin win;
 	ScreenGameOver lose;
 	Exceptions except;
-	
-	PImage timeField;
-	PImage scoreField;
 
 	public Logic(PApplet app) {
 		this.app = app;
 		//ost = new SoundFile(app, "../music/ost.mp3");
 		//coinSound = new SoundFile(app,"../music/coin.mp3");
 		match = new LinkedList<Match>();
-		this.dates = new CompareDateMatch();
+		this.date = new CompareDateMatch();
 		this.score = new CompareScoreMatch();
 		this.time = new CompareTimeMatch();
 
@@ -86,6 +77,40 @@ public class Logic {
 		
 
 		screenNum = 6;
+
+		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
+		// no sirve por falta de memoria)
+		// loadingBoolean = false;
+
+//		if(loadingBoolean == false) {
+//			new Thread(
+//				() -> {
+//					try {
+//						while(!loadingBoolean) {
+//							System.out.println("Esta cargando el archivo de arepasTaleOst en un hilo aparte...");
+//							
+//							System.out.println("Si funciono");
+//							loadingBoolean = true;
+//							Thread.sleep(1);
+//							//TimeUnit.MILLISECONDS.sleep(100);
+//							System.out.println(loadingBoolean);
+//						}
+//						//loadingBoolean = true;
+//						//System.out.println(loadingBoolean);
+//						Thread.sleep(1);
+//						TimeUnit.MILLISECONDS.sleep(1);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//				).start();
+//		}
+//		if(loadingBoolean = true) {
+//			ost = new SoundFile(app, "../music/ost.mp3");
+//		}
+
+		
 
 		splash = new ScreenSplash(app);
 		login = new ScreenLog(app);
@@ -143,15 +168,13 @@ public class Logic {
 		//int backX, int posX, int posY, int dirX, int vel,PApplet app
 		
 		
-		//Agregar los pngs de los campos de tiempo y puntaje
-		timeField = app.loadImage("pngs/characters/Time.png");
-		scoreField = app.loadImage("pngs/characters/Score.png");
+		
 
 		matrix = new int[][] {
 
 				/*
-				 * 0 = zonas vacï¿½as 1 = piso 2 = zonas de daï¿½o 3 = cuadros de muerte 4 =
-				 * bloqueos /** esto esta puesto cada 10 casillas para usarlo como guï¿½a para
+				 * 0 = zonas vacías 1 = piso 2 = zonas de daño 3 = cuadros de muerte 4 =
+				 * bloqueos /** esto esta puesto cada 10 casillas para usarlo como guía para
 				 * orgnizar el arreglo
 				 * 
 				 * 
@@ -165,14 +188,6 @@ public class Logic {
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4,4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4 }, };
 	}
 
-	
-	public String getDate(){
-	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    Date date = new Date();
-
-	    return dateFormat.format(date);
-	}
-	
 	public void draw() {
 
 		switch (screenNum) {
@@ -202,16 +217,14 @@ public class Logic {
 			// GAME SCREEN
 			sec = PApplet.second();
 
-			//Acï¿½ se pintan el mapa y el protagonista
+			//Acá se pintan el mapa y el protagonista
 			map.draw(backX);
 			prota.draw();
 			colicionRata();
-
 			//Pintar el método de validar cuando se coge una moneda
 			validarMoneda();
-			getDate();
-			
-			//Aquï¿½ se pintan las cositas(enemigos y monedas)
+
+			//Aquí se pintan las cositas(enemigos y monedas)
 			for (int i = 0; i < cuchillo.size(); i++) {
 				cuchillo.get(i).draw(backX);
 			}
@@ -233,7 +246,8 @@ public class Logic {
 				cont++;
 			}
 			if (sec > 60) {
-				sec = 0;	
+				sec = 0;
+				
 			}
 			if (cont >= 60) {
 				cont1++;
@@ -241,23 +255,18 @@ public class Logic {
 
 			app.fill(238, 19, 19);
 			app.textSize(25);
-			app.text(cont1 + ":" + cont, 65, 38);
-			app.image(timeField, 80, 30,121,41);
+			app.text(cont1 + ":" + cont, 150, 30);
+			app.text("Timer:", 60, 30);
 
 			app.fill(238, 19, 19);
 			app.textSize(25);
-
-			app.image(scoreField, 250, 30,121,41);
-			app.text(scores2, 235, 38);
-
-			
+			app.text("Score:", 230, 30);
+			app.text(scores2, 315, 30);
 
 			break;
 		case 7:
 			// WIN
 			win.draw();
-			app.text(cont1 + ":" + cont, 657, 556);
-			app.text(scores2, 306, 556);
 			break;
 		case 8:
 			// GAME OVER
@@ -321,8 +330,8 @@ public class Logic {
 			// DE HOME A GAME SCREEN
 			if ((637 > app.mouseX && app.mouseX > 363) && (456 > app.mouseY && app.mouseY > 389)) {
 				
-			// Esto es para que se de play la mï¿½sica
-			//ost.play();
+			// Esto es para que se de play la música
+				//ost.play();
 			screenNum = 6;
 			
 			//hilo rata
@@ -337,6 +346,7 @@ public class Logic {
 			// DE SCORES A HOME
 			if ((125 > app.mouseX && app.mouseX > 39) && (92 > app.mouseY && app.mouseY > 24)) {
 				screenNum = 4;
+						restartGame();
 			}
 			// ORDENAMIENTO USUARIO
 			if ((475 > app.mouseX && app.mouseX > 201) && (595 > app.mouseY && app.mouseY > 530)) {
@@ -367,12 +377,15 @@ public class Logic {
 		case 8:
 			// DE LOSE A HOME
 			if ((816 > app.mouseX && app.mouseX > 539) && (560 > app.mouseY && app.mouseY > 493)) {
-				screenNum = 4;
+				;
+				restartGame();
+				screenNum=4;
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
-				// Esto es para que se de play la mï¿½sica
+				// Esto es para que se de play la música
 restartGame();
+screenNum=6;
 
 				//ost.play();
 				//screenNum = 6;
@@ -394,11 +407,7 @@ restartGame();
 		
 	if(bx>=58) {screenNum=7;
 	win.textFields();}
-	
-	if(prota.getPosY()>4) {screenNum=8;coin.removeAll(coin);}
-	
-	
-	
+	if(prota.getPosY()>4) {screenNum=8;}
 		switch (i) {
 		case 0:
 			if (matrix[prota.getPosY()+1][bx+1] == 1) {
@@ -452,7 +461,7 @@ restartGame();
 			Collections.sort(match);
 			break;
 		case 1:
-			Collections.sort(match, dates);
+			Collections.sort(match, date);
 			break;
 		case 2:
 			Collections.sort(match, score);
@@ -479,22 +488,19 @@ public void colicionRata(){
 	for (int i = 0; i < rata.size(); i++) {
 		
 	float	d=app.dist(bx, prota.getPosY(), rata.get(i).getPosX(), rata.get(i).getPosY());
-		if(d<1) {screenNum=8;coin.removeAll(coin);}
-		
+		if(d<1) {screenNum=8;}
 	}
 	
 	//medir toque de los cuchillos
 	for (int i = 0; i < cuchillo.size(); i++) {
 		float	d1=app.dist(bx, prota.getPosY(), (cuchillo.get(i).getPosX()), cuchillo.get(i).getPosY());
-		if(d1<1) {screenNum=8;coin.removeAll(coin);}
-		
+		if(d1<1) {screenNum=8;}
 	}
 	
 	// medir toque del fuego
 	for (int i = 0; i < fire.size(); i++) {
 		float	d2=app.dist(bx, prota.getPosY(), fire.get(i).getPosX(), fire.get(i).getPosY());
-		if(d2<1) {screenNum=8;coin.removeAll(coin);}
-		
+		if(d2<1) {screenNum=8;}
 	}
 	
 }
@@ -502,7 +508,13 @@ public void restartGame() {
 	
 	
 	
-	backX=0;
+	backX= 0;
+	for (int i = 0; i < rata.size(); i++) {
+		
+	}
+	
+    prota.setY(4);
+
 	coin.add(new Cheese(backX, 4, 2,app));
 	coin.add(new Cheese(backX, 8, 2,app));
 	coin.add(new Cheese(backX, 11, 2,app));
@@ -518,12 +530,11 @@ public void restartGame() {
 	coin.add(new Cheese(backX, 47, 2,app));
 	coin.add(new Cheese(backX, 49, 2,app));
 	coin.add(new Cheese(backX, 55, 2,app));
+
 	
-	scores2=0;
-	screenNum=6;
+		scores2=0;
 	
 	
-	prota.setY(4);
 	bx=1;
 	sec=0;
 	timer=0;
