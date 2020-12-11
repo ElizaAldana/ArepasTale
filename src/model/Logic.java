@@ -127,7 +127,7 @@ public class Logic {
 
 		
 		posX = 1;
-		posY = 2;
+		posY = 4;
 		
 		//Agregar al protagonista en el lugar indicado.
 		prota = new Arepa(0, posX, posY, app);
@@ -376,15 +376,15 @@ public class Logic {
 		case 8:
 			// DE LOSE A HOME
 			if ((816 > app.mouseX && app.mouseX > 539) && (560 > app.mouseY && app.mouseY > 493)) {
-				screenNum = 4;
+				;
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
 				// Esto es para que se de play la música
+restartGame();
 
-
-				ost.play();
-				screenNum = 6;
+				//ost.play();
+				//screenNum = 6;
 //				if(loadingBoolean == true) {
 //					ost.play();
 //					screenNum=6;
@@ -401,7 +401,7 @@ public class Logic {
 	public void move(int i) {
 		if(screenNum==6) {
 		
-	if(bx>=59) {screenNum=7;
+	if(bx>59) {screenNum=7;
 	win.textFields();}
 	if(prota.getPosY()>4) {screenNum=8;}
 		switch (i) {
@@ -420,6 +420,7 @@ public class Logic {
 			}
 			break;
 		case 2:
+			if(bx>1) {
 			if (matrix[prota.getPosY()][bx] != 1) {
 		bx--;
 		//Izquierda
@@ -428,6 +429,7 @@ public class Logic {
 			
 			move(1);
 			
+			}
 			}
 			break;
 		
@@ -496,6 +498,37 @@ public void colicionRata(){
 		float	d2=app.dist(bx, prota.getPosY(), fire.get(i).getPosX(), fire.get(i).getPosY());
 		if(d2<1) {screenNum=8;}
 	}
+	
+}
+public void restartGame() {
+	for (int i = 0; i < coin.size(); i++) {
+		coin.remove(i);
+		
+	}
+	coin.add(new Cheese(backX, 4, 2,app));
+	coin.add(new Cheese(backX, 8, 2,app));
+	coin.add(new Cheese(backX, 11, 2,app));
+	coin.add(new Cheese(backX, 17, 2,app));
+	coin.add(new Cheese(backX, 21, 2,app));
+	coin.add(new Cheese(backX, 24, 4,app));
+	coin.add(new Cheese(backX, 27, 2,app));
+	coin.add(new Cheese(backX, 32, 2,app));
+	coin.add(new Cheese(backX, 34, 2,app));
+	coin.add(new Cheese(backX, 37, 2,app));
+	coin.add(new Cheese(backX, 40, 2,app));
+	coin.add(new Cheese(backX, 44, 2,app));
+	coin.add(new Cheese(backX, 47, 2,app));
+	coin.add(new Cheese(backX, 49, 2,app));
+	coin.add(new Cheese(backX, 55, 2,app));
+	screenNum=6;
+	scores2=0;
+	backX=0;
+	prota.setY(4);
+	bx=1;
+	sec=0;
+	timer=0;
+	cont=0;
+	cont1=0;
 	
 }
 	
