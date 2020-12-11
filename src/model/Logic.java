@@ -289,6 +289,8 @@ public class Logic {
 		case 7:
 			// WIN
 			win.draw();
+			app.text(cont1 + ":" + cont, 657, 556);
+			app.text(scores2, 306, 556);
 			break;
 		case 8:
 			// GAME OVER
@@ -398,7 +400,7 @@ public class Logic {
 		case 8:
 			// DE LOSE A HOME
 			if ((816 > app.mouseX && app.mouseX > 539) && (560 > app.mouseY && app.mouseY > 493)) {
-				;
+				screenNum = 4;
 			}
 			// DE LOSE A GAME SCREEN
 			if ((457 > app.mouseX && app.mouseX > 181) && (560 > app.mouseY && app.mouseY > 493)) {
