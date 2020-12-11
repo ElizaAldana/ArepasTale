@@ -1,7 +1,10 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -162,6 +165,13 @@ public class Logic {
 				{ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 3, 3, 4, 4, 4, 4, 3, 3, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4,4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4/**/, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4/**/, 4, 4, 4, 4, 4, 4, 4 }, };
 	}
 
+	public String getDate(){
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    Date date = new Date();
+
+	    return dateFormat.format(date);
+	}
+	
 	public void draw() {
 
 		switch (screenNum) {
