@@ -23,7 +23,7 @@ public class Controller {
 		
 	}
 	public void sort(int s) {
-	logica.sortList(s);
+		logica.sortList(s);
 	}
 	
 	

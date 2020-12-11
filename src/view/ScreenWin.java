@@ -5,6 +5,7 @@ import controlP5.Textfield;
 import processing.core.PApplet;
 
 public class ScreenWin extends Screen{
+	String name;
 
 	public ScreenWin(PApplet app) {
 		super(app);
@@ -33,4 +34,14 @@ public class ScreenWin extends Screen{
 	public void clear() {
 		cp5.get(Textfield.class,"name").clear();
 	}
+	public void metodo() {
+		name = cp5.get(Textfield.class,"name").getText();
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

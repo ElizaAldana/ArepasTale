@@ -29,6 +29,10 @@ public class Logic {
 	int cont = 0;
 	int cont1 = 0;
 	
+
+	int compareClick;
+	
+
 	int posX;
 	int posY;
 	
@@ -78,38 +82,7 @@ public class Logic {
 
 		screenNum = 6;
 
-		// ----------NO FUNCIONA---------- (hilo para que cargue más rápido la música,
-		// no sirve por falta de memoria)
-		// loadingBoolean = false;
-
-//		if(loadingBoolean == false) {
-//			new Thread(
-//				() -> {
-//					try {
-//						while(!loadingBoolean) {
-//							System.out.println("Esta cargando el archivo de arepasTaleOst en un hilo aparte...");
-//							
-//							System.out.println("Si funciono");
-//							loadingBoolean = true;
-//							Thread.sleep(1);
-//							//TimeUnit.MILLISECONDS.sleep(100);
-//							System.out.println(loadingBoolean);
-//						}
-//						//loadingBoolean = true;
-//						//System.out.println(loadingBoolean);
-//						Thread.sleep(1);
-//						TimeUnit.MILLISECONDS.sleep(1);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//				).start();
-//		}
-//		if(loadingBoolean = true) {
-//			ost = new SoundFile(app, "../music/ost.mp3");
-//		}
-
+		
 		
 
 		splash = new ScreenSplash(app);
@@ -167,6 +140,7 @@ public class Logic {
 		coin.add(new Cheese(backX, 55, 2,app));
 		//int backX, int posX, int posY, int dirX, int vel,PApplet app
 		
+		int datesssss;
 		
 		
 
@@ -351,19 +325,27 @@ public class Logic {
 			// ORDENAMIENTO USUARIO
 			if ((475 > app.mouseX && app.mouseX > 201) && (595 > app.mouseY && app.mouseY > 530)) {
 				System.out.println("ordenamiento por usuario");
+				compareClick = 0;
 			}
 			// ORDENAMIENTO TIEMPO
 			if ((475 > app.mouseX && app.mouseX > 201) && (673 > app.mouseY && app.mouseY > 606)) {
 				System.out.println("ordenamiento por tiempo");
+				compareClick = 3;
 			}
 			// ORDENAMIENTO FECHA
 			if ((796 > app.mouseX && app.mouseX > 519) && (673 > app.mouseY && app.mouseY > 606)) {
 				System.out.println("ordenamiento por fecha");
+				compareClick = 1;
 			}
 			// ORDENAMIENTO PUNTAJE
 			if ((796 > app.mouseX && app.mouseX > 519) && (595 > app.mouseY && app.mouseY > 530)) {
 				System.out.println("ordenamiento por puntaje");
+				compareClick = 2;
 			}
+			for (int i = 0; i < match.size(); i++) {
+				match.get(i).draw(30,30);
+			}
+			sortList(compareClick);
 			break;
 		case 7:
 
@@ -386,6 +368,8 @@ public class Logic {
 				// Esto es para que se de play la música
 restartGame();
 screenNum=6;
+				// Esto es para que se de play la mï¿½sica
+				restartGame();
 
 				//ost.play();
 				//screenNum = 6;
@@ -408,6 +392,24 @@ screenNum=6;
 	if(bx>=58) {screenNum=7;
 	win.textFields();}
 	if(prota.getPosY()>4) {screenNum=8;}
+	if(bx>=58) {
+		
+		//Validar ganar
+		screenNum=7;
+		//match.add(new Match());
+		win.metodo();
+		String name = win.getName();
+		match.add(new Match(name,getDate(),scores2,timer,app));	
+		//String name,String date,int score,int time, PApplet app
+		win.textFields();
+		}
+	
+	if(prota.getPosY()>4) {
+		screenNum=8;coin.removeAll(coin);
+		}
+	
+	
+	
 		switch (i) {
 		case 0:
 			if (matrix[prota.getPosY()+1][bx+1] == 1) {
@@ -471,6 +473,7 @@ screenNum=6;
 			break;
 		}
 	}
+	
 	
 	public void validarMoneda() {
 		

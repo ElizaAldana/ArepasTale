@@ -5,16 +5,18 @@ import processing.core.PApplet;
 public class Match implements Comparable <Match>{
 
 	PApplet app;
-	String name, date;
+	String name;
 	private int score, time;
+	private String date;
 	
-	public Match(String name,String date,int score,int time, PApplet app) {
+	public Match(String name, String date,int score,int time, PApplet app) {
 		this.name=name;
 		this.date=date;
 		this.score=score;
 		this.time=time;
 	}
 	
+
 	public int compareTo(Match c) {
 		return this.getName().compareTo(c.getName()); 
 	}
